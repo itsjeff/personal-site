@@ -1,0 +1,9 @@
+/vendor
+/projects
+/node_modules
+/public/storage
+/cgi-bin
+Homestead.yaml
+Homestead.json
+.ftpquota
+.env
