@@ -12,18 +12,25 @@
 </head>
 <body>
     <div class="container">
-        <h1>Jeffery Nielsen</h1>
-        <p>Feeling: <strong>fine and dandy</strong></p>
+        <div class="welcome">
+            <h1>Jeffery Nielsen</h1>
+            <p>Feeling: <strong>fine and dandy</strong></p>
 
-        @if (count($posts) > 0)
-            @foreach ($posts as $post)
-                <h3><a href="/{{$post->slug}}" title="Read {{$post->title}}">{{$post->title}}</a></h3>
-                <div>{!!$post->created_at!!}</div>
-                {!!$post->content!!}
-            @endforeach
-        @else
-            <i>No posts yet</i>
-        @endif
+            <ul>
+                <li><a href="https://github.com/itsjeff">itsjeff@Github</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            @if (count($posts) > 0)
+                @foreach ($posts as $post)
+                    <h3><a href="/{{$post->slug}}" title="Read {{$post->title}}">{{$post->title}}</a></h3>
+                    <div>{!!$post->created_at!!}</div>
+                    {!!$post->content!!}
+                @endforeach
+            @else
+                <i>No posts yet</i>
+            @endif
+        </div>
     </div>
 </body>
 </html>
