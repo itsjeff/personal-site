@@ -15,11 +15,15 @@
         <h1>Jeffery Nielsen</h1>
         <p>Feeling: <strong>fine and dandy</strong></p>
 
-        @foreach ($posts as $post)
-            <h3><a href="/{{$post->slug}}" title="Read {{$post->title}}">{{$post->title}}</a></h3>
-            <div>{!!$post->created_at!!}</div>
-            {!!$post->content!!}
-        @endforeach
+        @if (count($posts) > 0)
+            @foreach ($posts as $post)
+                <h3><a href="/{{$post->slug}}" title="Read {{$post->title}}">{{$post->title}}</a></h3>
+                <div>{!!$post->created_at!!}</div>
+                {!!$post->content!!}
+            @endforeach
+        @else
+            <i>No posts yet</i>
+        @endif
     </div>
 </body>
 </html>
