@@ -19,6 +19,11 @@
             <ul>
                 <li><a href="https://github.com/itsjeff">itsjeff@Github</a></li>
             </ul>
+
+            <strong>Categories</strong>
+            <ul>
+                <li><a href="/category/posts" title="Posts">Posts</a></li>
+            </ul>
         </div>
         <div class="content">
             @if (count($posts) > 0)
