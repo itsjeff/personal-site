@@ -12,4 +12,9 @@ class Post extends Model
 	protected $table = 'posts';	
 
 	protected $dates = ['deleted_at'];
+
+	public function category()
+	{
+		return $this->belongsToMany('App\Models\Category');
+	}
 }
