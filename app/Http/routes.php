@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Frontend\HomeController@index');
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+	Route::get('/', 'Backend\PostsController@index');
+});
