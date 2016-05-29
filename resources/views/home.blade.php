@@ -8,7 +8,7 @@
     <title>Jeffery Nielsen</title>
     <meta name="description" content="Jeffery Nielsen is a Fullstack Web Developer from Sydney, Australia.">
 
-    <link rel="stylesheet" href="/public/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
     <div class="container">
