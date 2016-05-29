@@ -6,16 +6,20 @@
     <meta name="viewport" content="width=device-width">
 
     <title>Mr.Jeffery Nielsen</title>
+
+    <link rel="stylesheet" href="/public/assets/css/main.css">
 </head>
 <body>
-    <h1>Jeffery Nielsen</h1>
-    <p>Feeling: <strong>fine and dandy</strong></p>
+    <div class="container">
+        <h1>Jeffery Nielsen</h1>
+        <p>Feeling: <strong>fine and dandy</strong></p>
 
-    @foreach ($posts as $post)
-        <h3><a href="/{{$post->slug}}" title="Read {{$post->title}}">{{$post->title}}</a></h3>
-        <div>{!!$post->created_at!!}</div>
-        {!!$post->content!!}
-    @endforeach
+        @foreach ($posts as $post)
+            <h3><a href="/{{$post->slug}}" title="Read {{$post->title}}">{{$post->title}}</a></h3>
+            <div>{!!$post->created_at!!}</div>
+            {!!$post->content!!}
+        @endforeach
+    </div>
 </body>
 </html>
       
