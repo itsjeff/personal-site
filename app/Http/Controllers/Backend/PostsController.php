@@ -41,7 +41,12 @@ class PostsController extends Controller
 
 	public function edit($id)
 	{
-		echo $id;
+		$data = [
+			'post' => $this->posts->find($id),
+			'moduleUrl' => $this->moduleUrl,
+			];
+
+		return view('backend.posts-form')->with($data);
 	}
 
 	public function update($id)
