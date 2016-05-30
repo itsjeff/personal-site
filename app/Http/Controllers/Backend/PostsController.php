@@ -8,7 +8,7 @@ use App\Models\Post;
 class PostsController extends Controller
 {
 	protected $posts;
-	public $moduleUrl = '/admin';
+	public $moduleUrl = '/admin/posts';
 
 	public function __construct(Post $posts)
 	{
@@ -35,6 +35,21 @@ class PostsController extends Controller
 	}
 
 	public function store()
+	{
+		//
+	}
+
+	public function edit($id)
+	{
+		echo $id;
+	}
+
+	public function update($id)
+	{
+		//
+	}
+
+	public function show($id)
 	{
 		//
 	}
