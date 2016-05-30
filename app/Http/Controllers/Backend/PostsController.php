@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller as Controller;
 use App\Models\Post;
+use Illuminate\Http\Request;
+use Auth;
 
 class PostsController extends Controller
 {
@@ -34,9 +36,15 @@ class PostsController extends Controller
 		return view('backend.posts-form')->with($data);
 	}
 
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$post = new Post;
+                $post->title = $request->input('title');
+                $post->content = $request->input('content');
+                $post->author = Auth::user()->id;
+                $post->save();
+
+                return redirect()->back();
 	}
 
 	public function edit($id)
