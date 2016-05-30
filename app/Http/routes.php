@@ -20,5 +20,9 @@ Route::group(['namespace' => 'Auth'], function() {
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
-	Route::resource('/', 'Backend\PostsController');
+	Route::get('/', function() {
+		echo 'asfas';
+	});
+
+	Route::resource('posts', 'Backend\PostsController');
 });
