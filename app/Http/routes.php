@@ -13,8 +13,12 @@
 
 Route::get('/', 'Frontend\HomeController@index');
 
-Route::auth();
+Route::group(['namespace' => 'Auth'], function() {
+	Route::get('login', 'AuthController@getLogin');
+	Route::post('login', 'AuthController@postLogin');
+	Route::get('logout', 'AuthController@getLogout');
+});
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
-	Route::get('/', 'Backend\PostsController@index');
+	Route::resource('/', 'Backend\PostsController');
 });
