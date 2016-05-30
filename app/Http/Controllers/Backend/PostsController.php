@@ -41,7 +41,7 @@ class PostsController extends Controller
 		$post = new Post;
                 $post->title = $request->input('title');
                 $post->content = $request->input('content');
-                $post->author = Auth::user()->id;
+                $post->author_id = Auth::user()->id;
                 $post->save();
 
                 return redirect()->back();
