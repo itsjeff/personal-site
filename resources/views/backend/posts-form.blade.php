@@ -6,9 +6,13 @@
 		<div class="col-xs-8">
 		    <form method="post" action="{{$moduleUrl}}">
 		        {!!csrf_field()!!}
+                        @if(isset($post) && is_object($post))
+                        <input type="hidden" name="_method" value="put">
+                        @endif
+
 		        <div class="form-group">
 		        	<label class="form-label">Title</label>
-		        	<input class="form-control" type="text" name="title" value="@if(isset($post) && is_object($post)) H{{$post->title}} @endif">
+		        	<input class="form-control" type="text" name="title" value="@if(isset($post) && is_object($post)) {{$post->title}} @endif">
 		        </div>
 		        <div class="form-group">
 		        	<label class="form-label">Cover Image</label>
@@ -16,7 +20,7 @@
 		        </div>
 		        <div class="form-group">
 		        	<label class="form-label">Content</label>
-		        	<textarea class="form-control" rows="7" name="content">@if(isset($post) && is_object($post)) H{{$post->content}} @endif</textarea>
+		        	<textarea class="form-control" rows="7" name="content">@if(isset($post) && is_object($post)) {{$post->content}} @endif</textarea>
 		        </div>
 		        <button class="btn btn-primary" type="submit" name="save">Save</button>
 		    </form>
