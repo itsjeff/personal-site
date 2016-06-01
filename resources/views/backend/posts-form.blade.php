@@ -16,7 +16,7 @@
 		        </div>
 		        <div class="form-group">
 		        	<label class="form-label">Content</label>
-		        	<textarea class="form-control" rows="7" name="content">{{@if(isset($post)) $post->content @endif}}</textarea>
+		        	<textarea class="form-control" rows="7" name="content"></textarea>
 		        </div>
 		        <button class="btn btn-primary" type="submit" name="save">Save</button>
 		    </form>
