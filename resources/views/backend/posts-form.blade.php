@@ -8,7 +8,7 @@
 		        {!!csrf_field()!!}
 		        <div class="form-group">
 		        	<label class="form-label">Title</label>
-		        	<input class="form-control" type="text" name="title" value="{{@if(isset($post)) $post->title @endif}}">
+		        	<input class="form-control" type="text" name="title" value="{{@if(isset($post) && is_object($post)) $post->title @endif}}">
 		        </div>
 		        <div class="form-group">
 		        	<label class="form-label">Cover Image</label>
