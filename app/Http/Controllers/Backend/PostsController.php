@@ -50,7 +50,7 @@ class PostsController extends Controller
 	public function edit($id)
 	{
 		$data = [
-			'post' => $this->posts->find($id),
+			'post' => $this->posts->WithTrashed()->find($id),
 			'moduleUrl' => $this->moduleUrl,
 			];
 
