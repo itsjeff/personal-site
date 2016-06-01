@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="col-xs-8">
+		<div class="col-xs-12 col-md-8">
 		    <form method="post" action="{{$moduleUrl}}">
 		        {!!csrf_field()!!}
                         @if(isset($post) && is_object($post))
@@ -25,7 +25,7 @@
 		        <button class="btn btn-primary" type="submit" name="save">Save</button>
 		    </form>
 		</div>
-		<div class="col-xs-4">
+		<div class="col-xs-12 col-md-4">
 			<h4>Categories</h4>
 			<ul>
 				<li>--</li>
