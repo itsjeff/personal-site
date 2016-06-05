@@ -147,7 +147,7 @@ class PostsController extends Controller
 
 			$file->move($directory, $fileName);
 
-                        Image::make($directory.$fileName)->resize(600, 400);
+                        Image::make($directory.$fileName)->resize(600, 400)->save();
 
 			$media = new Media;
 			$media->filename          = $fileName;
