@@ -4,20 +4,31 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller as Controller;
 use App\Models\Post;
+use App\Models\Media;
 use Illuminate\Http\Request;
 use Auth;
 
 class PostsController extends Controller
 {
-	protected $posts;
+	/**
+	 * Models
+	 * @var object
+	 */
+	protected $media;
+	protected $post;
+	/**
+	 * Module url slug
+	 * @var string
+	 */
 	public $moduleUrl = '/admin/posts';
 
 	/**
 	 * Instantiate models
 	 * @return void
 	 */
-	public function __construct(Post $post)
+	public function __construct(Post $post, Media $media)
 	{
+		$this->media = $media;
 		$this->post = $post;
 	}
 
@@ -54,9 +65,16 @@ class PostsController extends Controller
 	 */
 	public function store(Request $request)
 	{
+		$coverImageId = $this->upload($request);
+
 		$post = new Post;
                 $post->title = $request->input('title');
                 $post->content = $request->input('content');
+
+                if ($coverImageId > 0) {
+                	$post->cover_image = $coverImageId;
+                }
+
                 $post->author_id = Auth::user()->id;
                 $post->save();
 
@@ -85,9 +103,16 @@ class PostsController extends Controller
 	 */
 	public function update($id, Request $request)
 	{
+		$coverImageId = $this->upload($request);
+
 		$post = $this->post->find($id);
                 $post->title = $request->input('title');
                 $post->content = $request->input('content');
+
+                if ($coverImageId > 0) {
+                	$post->cover_image = $coverImageId;
+                }
+
                 $post->save();
 
         return redirect()->back();
@@ -107,8 +132,30 @@ class PostsController extends Controller
 	 * Upload file
 	 * @return void
 	 */
-	public function upload()
+	public function upload($request)
 	{
-		//
+		$directory = 'media/';
+		$inputName = 'coverimage';
+		$file      = $request->file($inputName);
+
+		if ($request->hasFile($inputName)) {
+			$oldFileName = $file->getClientOriginalName();
+			$fileType    = $file->getClientOriginalExtension();
+			$fileName    = str_slug($file->getClientOriginalName()).'.'.$fileType;
+
+			$file->move($directory, $fileName);
+
+			$media = new Media;
+			$media->filename          = $fileName;
+			$media->original_filename = $oldFileName;
+			$media->path              = $directory.$fileName;
+			$media->size              = $file->getClientSize();
+			$media->mime_type         = $file->getClientMimeType();
+			$media->save();
+
+			return $media->id;
+		}
+
+		return 0;
 	}
 }

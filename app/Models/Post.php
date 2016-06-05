@@ -17,4 +17,9 @@ class Post extends Model
 	{
 		return $this->belongsToMany('App\Models\Category');
 	}
+
+	public function coverimage()
+	{
+		return $this->belongsTo('App\Models\Media', 'cover_image');
+	}
 }
