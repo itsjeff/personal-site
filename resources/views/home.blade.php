@@ -9,21 +9,37 @@
     <meta name="description" content="Jeffery Nielsen is a Fullstack Web Developer from Sydney, Australia.">
 
     <link rel="stylesheet" href="/assets/css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
     <div class="container">
         <div class="welcome">
-            <h1>Jeffery Nielsen</h1>
-            <p>Feeling: <strong>fine and dandy</strong></p>
+            <div class="branding">
+                <h1>Jeffery Nielsen</h1>
+                <span>Web Developer from NSW, Australia</span>
+            </div>
 
-            <ul>
-                <li><a href="https://github.com/itsjeff">itsjeff@Github</a></li>
-            </ul>
+            <div class="feeling">
+                Feeling fine and dandy
+            </div>
 
-            <strong>Categories</strong>
-            <ul>
-                <li><a href="/category/posts" title="Posts">Posts</a></li>
-            </ul>
+            <div class="panel-block">
+                <div class="panel-block-heading">
+                    Other Places
+                </div>
+                <ul class="panel-block-body">
+                    <li><a href="https://github.com/itsjeff">itsjeff@Github</a></li>
+                </ul>
+            </div>
+
+            <div class="panel-block">
+                <div class="panel-block-heading">
+                    Categories
+                </div>
+                <ul class="panel-block-body">
+                    <li><a href="/category/posts" title="Posts">Posts ({{$total_posts}})</a></li>
+                </ul>
+            </div>
         </div>
         <div class="content">
             @if (count($posts) > 0)
