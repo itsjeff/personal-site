@@ -28,7 +28,7 @@
                     Other Places
                 </div>
                 <ul class="panel-block-body">
-                    <li><a href="https://github.com/itsjeff">itsjeff@Github</a></li>
+                    <li><a href="https://github.com/itsjeff" title="Jeffery Nielsen @ Github" target="_blank">itsjeff@Github</a></li>
                 </ul>
             </div>
 
