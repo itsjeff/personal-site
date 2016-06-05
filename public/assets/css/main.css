@@ -108,4 +108,8 @@ a {
   .content {
    padding: 0;
   }
+
+  .post {
+    margin-bottom: 1em;
+  }
 }
