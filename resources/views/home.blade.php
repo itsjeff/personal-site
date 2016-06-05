@@ -28,9 +28,15 @@
         <div class="content">
             @if (count($posts) > 0)
                 @foreach ($posts as $post)
-                    <h3><a href="/{{$post->slug}}" title="Read {{$post->title}}">{{$post->title}}</a></h3>
-                    <div>{!!$post->created_at!!}</div>
-                    {!!$post->content!!}
+                    <article class="post" id="post-{{$post->id}}_{{$post->slug}}">
+                        <div class="post-title">
+                            <div class="created-at">{!!$post->created_at!!}</div>
+                            <h3><a href="/{{$post->slug}}" title="Read {{$post->title}}">{{$post->title}}</a></h3>
+                        </div>
+                        <div class="post-content">
+                            {!!$post->content!!}
+                        </div>
+                    </article>
                 @endforeach
             @else
                 <i>No posts yet</i>
