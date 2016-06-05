@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Media;
 use Illuminate\Http\Request;
 use Auth;
+use Image;
 
 class PostsController extends Controller
 {
@@ -145,6 +146,8 @@ class PostsController extends Controller
 			$fileName    = str_slug($file->getClientOriginalName()).'.'.$fileType;
 
 			$file->move($directory, $fileName);
+
+                        Image::make($directory.$fileName)->resize(600, 400);
 
 			$media = new Media;
 			$media->filename          = $fileName;
