@@ -32,11 +32,14 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $total_posts = $this->posts->count();
+
         $posts = $this->posts
             ->orderBy('created_at', 'DESC')
             ->get();
 
         $data = [
+            'total_posts' => $total_posts,
             'posts' => $posts
             ];
 
