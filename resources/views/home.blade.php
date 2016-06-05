@@ -38,7 +38,7 @@
                 </div>
                 <ul class="panel-block-body">
                     @foreach($categories as $category)
-                        <li><a href="/{{$category->slug}}/posts" title="{{$category->title}}">{{$category->title}} ({{count($category->posts)}})</a></li>
+                        <li><a href="/category/{{$category->slug}}" title="{{$category->title}}">{{$category->title}} ({{count($category->posts)}})</a></li>
                     @endforeach
                 </ul>
             </div>
