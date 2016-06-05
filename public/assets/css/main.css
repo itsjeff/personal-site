@@ -9,8 +9,9 @@ html {
 
 body {
   background: #e5eaee;
-  font-family: arial, 'sans-serif';
-  margin: 2em 0 0;
+  color: #222;
+  font-family: 'Roboto', 'sans-serif';
+  margin: 0;
   padding: 0;
 }
 
@@ -32,27 +33,33 @@ ul, ol {
 }
 
 a {
-  color: blue;
+  color: #2852A0;
 }
 
+a:hover {
+  color: #111;
+}
+
+/* @container */
 .container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 1em auto;
   position: relative;
-  padding-left: 280px;
+  padding-left: 300px;
 }
 
 .welcome {
   position: absolute;
   left: 0;
   top: 0;
-  width: 280px;
+  width: 300px;
 }
 
 .content {
-  padding-left: 1em;
+  padding-left: 3em;
 }
 
+/* @post */
 .post {
   background: #fff;
   border-radius: 4px;
@@ -74,6 +81,7 @@ a {
 
 .post-title h3 {
   margin: 0;
+  font-weight: 500;
 }
 
 .post-title a {
@@ -98,6 +106,51 @@ a {
   font-family: georgia, sans-serif;
   font-size: 1.1em;
 }
+
+/* @branding */
+.branding {
+  margin-bottom: 2em;
+}
+
+.branding h1 {
+  font-weight: 500;
+  margin: 0 0 .3em;
+}
+
+/* @feeling */
+.feeling {
+  font-style: italic;
+  margin-bottom: 2em;
+}
+
+/* @panel-block */
+.panel-block {
+  position: relative;
+  margin-bottom: 1.3em;
+  padding-bottom: 1.3em;
+}
+
+.panel-block-heading {
+  color: #60626B;
+  font-weight: 500;
+  margin-bottom: 1em;
+}
+
+.panel-block-body {
+  margin: 0;
+}
+
+.panel-block::after {
+  content: '';
+  display: block;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+  width: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+
 
 @media(max-width: 47.9em) {
   .container {
