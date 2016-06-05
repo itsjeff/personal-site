@@ -32,8 +32,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $posts = $this->posts
+            ->orderBy('created_at', 'DESC')
+            ->get();
+
         $data = [
-            'posts' => $this->posts->get()
+            'posts' => $posts
             ];
 
         return view('home')->with($data);
