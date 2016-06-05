@@ -37,7 +37,9 @@
                     Categories
                 </div>
                 <ul class="panel-block-body">
-                    <li><a href="/category/posts" title="Posts">Posts ({{$total_posts}})</a></li>
+                    @foreach($categories as $category)
+                        <li><a href="/{{$category->slug}}/posts" title="{{$category->title}}">{{$category->title}} ({{count($category->posts)}})</a></li>
+                    @endforeach
                 </ul>
             </div>
         </div>

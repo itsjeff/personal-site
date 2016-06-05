@@ -140,6 +140,10 @@ a:hover {
   margin: 0;
 }
 
+.panel-block-body li:not(:first-child) {
+  margin-top: .5em;
+}
+
 .panel-block::after {
   content: '';
   display: block;
