@@ -69,6 +69,7 @@ class PostsController extends Controller
 
 		$post = new Post;
                 $post->title = $request->input('title');
+                $post->slug = str_slug($request->input('title'));
                 $post->content = $request->input('content');
 
                 if ($coverImageId > 0) {
