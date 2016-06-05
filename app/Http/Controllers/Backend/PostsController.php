@@ -12,11 +12,19 @@ class PostsController extends Controller
 	protected $posts;
 	public $moduleUrl = '/admin/posts';
 
+	/**
+	 * Instantiate models
+	 * @return void
+	 */
 	public function __construct(Post $post)
 	{
 		$this->post = $post;
 	}
 
+	/**
+	 * List results
+	 * @return void
+	 */
 	public function index()
 	{
 		$data = [
@@ -27,6 +35,10 @@ class PostsController extends Controller
 		return view('backend.posts-manage')->with($data);
 	}
 
+	/**
+	 * Displlay post form
+	 * @return void
+	 */
 	public function create()
 	{
 		$data = [
@@ -36,6 +48,10 @@ class PostsController extends Controller
 		return view('backend.posts-form')->with($data);
 	}
 
+	/**
+	 * Store new post
+	 * @return void
+	 */
 	public function store(Request $request)
 	{
 		$post = new Post;
@@ -47,6 +63,11 @@ class PostsController extends Controller
                 return redirect()->back();
 	}
 
+	/**
+	 * Display form to edit post
+	 * @param  integer $id Post id
+	 * @return void
+	 */
 	public function edit($id)
 	{
 		$data = [
@@ -57,6 +78,11 @@ class PostsController extends Controller
 		return view('backend.posts-form')->with($data);
 	}
 
+	/**
+	 * Update post
+	 * @param  integer $id Post id
+	 * @return void
+	 */
 	public function update($id, Request $request)
 	{
 		$post = $this->post->find($id);
@@ -67,7 +93,21 @@ class PostsController extends Controller
         return redirect()->back();
 	}
 
+	/**
+	 * Display post
+	 * @param  integer $id Post id
+	 * @return void
+	 */
 	public function show($id)
+	{
+		//
+	}
+
+	/**
+	 * Upload file
+	 * @return void
+	 */
+	public function upload()
 	{
 		//
 	}
