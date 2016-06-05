@@ -64,6 +64,10 @@ a {
   margin-top: 1em;
 }
 
+.post-coverimage img {
+  display: block;
+}
+
 .post-title {
   padding: 1em 1em 0;
 }
