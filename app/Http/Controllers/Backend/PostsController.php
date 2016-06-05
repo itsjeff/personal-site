@@ -12,15 +12,15 @@ class PostsController extends Controller
 	protected $posts;
 	public $moduleUrl = '/admin/posts';
 
-	public function __construct(Post $posts)
+	public function __construct(Post $post)
 	{
-		$this->posts = $posts;
+		$this->post = $post;
 	}
 
 	public function index()
 	{
 		$data = [
-			'posts' => $this->posts->withTrashed()->paginate(15),
+			'posts' => $this->post->withTrashed()->paginate(15),
 			'moduleUrl' => $this->moduleUrl,
 			];
 
@@ -50,16 +50,21 @@ class PostsController extends Controller
 	public function edit($id)
 	{
 		$data = [
-			'post' => $this->posts->WithTrashed()->find($id),
+			'post' => $this->post->WithTrashed()->find($id),
 			'moduleUrl' => $this->moduleUrl,
 			];
 
 		return view('backend.posts-form')->with($data);
 	}
 
-	public function update($id)
+	public function update($id, Request $request)
 	{
-		//
+		$post = $this->post->find($id);
+                $post->title = $request->input('title');
+                $post->content = $request->input('content');
+                $post->save();
+
+        return redirect()->back();
 	}
 
 	public function show($id)

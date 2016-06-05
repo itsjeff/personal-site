@@ -20,7 +20,7 @@
             <tr>
                 <td>{{$post->id}}</td>
                 <td><a href="{{$moduleUrl}}/{{$post->id}}/edit">{{$post->title}}</a></td>
-                <td>{{$post->created_at}}</td>
+                <td>{{date('d M, Y - g:i a' ,strtotime($post->created_at))}}</td>
                 <td><a href="{{$moduleUrl}}/{{$post->id}}/edit">Edit</a></td>
             </tr>
         @endforeach

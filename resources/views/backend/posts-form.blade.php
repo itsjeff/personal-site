@@ -4,12 +4,13 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-md-8">
+			@if(isset($post) && is_object($post))
+		    <form method="post" action="{{$moduleUrl}}/{{$post->id}}">
+		    <input type="hidden" name="_method" value="PUT">
+		    @else
 		    <form method="post" action="{{$moduleUrl}}">
-		        {!!csrf_field()!!}
-                        @if(isset($post) && is_object($post))
-                        <input type="hidden" name="_method" value="put">
-                        @endif
-
+		    @endif
+		   		{!!csrf_field()!!}
 		        <div class="form-group">
 		        	<label class="form-label">Title</label>
 		        	<input class="form-control" type="text" name="title" value="@if(isset($post) && is_object($post)) {{$post->title}} @endif">
