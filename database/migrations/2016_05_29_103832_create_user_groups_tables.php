@@ -12,7 +12,11 @@ class CreateUserGroupsTables extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('user_groups', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('tag');
+        });
     }
 
     /**
@@ -22,6 +26,6 @@ class CreateUserGroupsTables extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('user_groups');
     }
 }

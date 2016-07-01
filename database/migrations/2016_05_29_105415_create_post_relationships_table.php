@@ -12,7 +12,11 @@ class CreatePostRelationshipsTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('post_relationships', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('post_id');
+            $table->string('category_id');
+        });
     }
 
     /**
@@ -22,6 +26,6 @@ class CreatePostRelationshipsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('post_relationships');
     }
 }
