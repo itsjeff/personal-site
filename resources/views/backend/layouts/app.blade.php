@@ -51,6 +51,7 @@
                     <li><a href="{{ url('/admin/posts') }}">Posts</a></li>
                     <li><a href="{{ url('/admin/categories') }}">Categories</a></li>
                     <li><a href="{{ url('/admin/media') }}">Media</a></li>
+                    <li><a href="{{ url('/admin/users') }}">Users</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
