@@ -11,9 +11,17 @@
 |
 */
 
-Route::get('/', 'Frontend\HomeController@index');
-Route::get('/categories/{slug?}', 'Frontend\CategoriesController@show');
-Route::get('/{slug}', 'Frontend\PostController@show');
+/**
+ * Backend
+ */
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+	Route::get('/', 'Backend\DashboardController@index');
+	Route::resource('posts', 'Backend\PostsController');
+	Route::resource('media', 'Backend\MediaController');
+	Route::resource('categories', 'Backend\CategoriesController');
+	Route::resource('users', 'Backend\UsersController');
+	Route::resource('user-groups', 'Backend\UserGroupsController');
+});
 
 /**
  * Auth
@@ -26,14 +34,10 @@ Route::group(['namespace' => 'Auth'], function() {
 	Route::post('register', 'AuthController@postRegister');
 });
 
+
 /**
- * Backend
+ * Frontend
  */
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
-	Route::get('/', 'Backend\DashboardController@index');
-	Route::resource('posts', 'Backend\PostsController');
-	Route::resource('media', 'Backend\MediaController');
-	Route::resource('categories', 'Backend\CategoriesController');
-	Route::resource('users', 'Backend\UsersController');
-	Route::resource('user-groups', 'Backend\UserGroupsController');
-});
+Route::get('/', 'Frontend\HomeController@index');
+Route::get('/categories/{slug?}', 'Frontend\CategoriesController@show');
+Route::get('/{slug}', 'Frontend\PostsController@show');
