@@ -17,6 +17,8 @@ Route::group(['namespace' => 'Auth'], function() {
 	Route::get('login', 'AuthController@getLogin');
 	Route::post('login', 'AuthController@postLogin');
 	Route::get('logout', 'AuthController@getLogout');
+	Route::get('register', 'AuthController@getRegister');
+	Route::get('register', 'AuthController@getRegister');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
