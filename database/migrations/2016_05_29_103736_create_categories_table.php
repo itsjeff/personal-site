@@ -12,7 +12,15 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('category', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title');
+            $table->string('slug');
+            $table->integer('parent_id');
+            $table->integer('order');
+            $table->timestamps();
+            $table->softDeletes();
+        });
     }
 
     /**
@@ -22,6 +30,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('category');
     }
 }
