@@ -10,6 +10,11 @@ class Category extends Model
 
     public function posts()
     {
-    	return $this->hasMany('App\Models\PostRelationship');
+    	return $this->hasMany('App\Models\PostRelationship', 'category_id');
     }
 }
+
+// select `posts`.*, `post_relationships`.`category_id` 
+// from `posts` 
+// inner join `post_relationships` on `post_relationships`.`id` = `posts`.`post_id` 
+// where `post_relationships`.`category_id` = 1 and `posts`.`deleted_at` is null

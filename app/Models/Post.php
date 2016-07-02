@@ -13,9 +13,9 @@ class Post extends Model
 
 	protected $dates = ['deleted_at'];
 
-	public function category()
+	public function categories()
 	{
-		return $this->belongsToMany('App\Models\Category');
+		return $this->hasMany('App\Models\PostRelationship');
 	}
 
 	public function coverimage()

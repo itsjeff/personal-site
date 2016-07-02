@@ -36,19 +36,13 @@ class HomeController extends Controller
     public function index()
     {
         $total_posts = $this->posts->count();
-
-        $posts = $this->posts
-            ->orderBy('created_at', 'DESC')
-            ->get();
-
+        $posts = $this->posts->orderBy('created_at', 'DESC')->get();
         $categories = $this->category->get();
 
-        $data = [
-            'total_posts' => $total_posts,
-            'posts' => $posts,
-            'categories' => $categories
-            ];
+        $this->setData('total_posts', $total_posts);
+        $this->setData('categories', $categories);
+        $this->setData('posts', $posts);
 
-        return view('home')->with($data);
+        return view('home')->with($this->data);
     }
 }

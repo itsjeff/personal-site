@@ -4,13 +4,31 @@
 	<div class="container">
 		<h1>Users</h1>
 
-		<p>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		</p>
+	    <div class="form-group">
+	    	<a class="btn btn-primary" href="{{$moduleUrl}}/create">Create</a>
+	    </div>
+
+	    <table class="table">
+	    <thead>
+	        <tr>
+	            <td>#</td>
+	            <td>Name</td>
+	            <td>Email</td>
+	            <td>Created at</td>
+	            <td>Actions</td>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        @foreach ($users as $user)
+	            <tr>
+	                <td>{{$user->id}}</td>
+	                <td><a href="{{$moduleUrl}}/{{$user->id}}/edit">{{$user->name}}</a></td>
+	                <td>{{$user->email}}</td>
+	                <td>{{date('d M, Y - g:i a' ,strtotime($user->created_at))}}</td>
+	                <td><a href="{{$moduleUrl}}/{{$user->id}}/edit">Edit</a></td>
+	            </tr>
+	        @endforeach
+	    </tbody>
+	    </table>
 	</div>
 @endsection
