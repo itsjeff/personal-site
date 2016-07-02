@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller as Controller;
+use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Media;
-use Illuminate\Http\Request;
 use Auth;
 use Image;
 
