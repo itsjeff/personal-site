@@ -8,6 +8,8 @@ class PostRelationship extends Model
 {
     protected $table = 'post_relationships';
 
+    public $timestamps = false;
+
     public function post()
     {
     	return $this->belongsTo('App\Models\Post');
