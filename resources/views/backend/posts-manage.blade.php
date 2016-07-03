@@ -21,7 +21,7 @@
             <td width="30%"><a href="{{$moduleUrl}}/{{$post->id}}/edit">{{$post->title}}</a></td>
             <td width="30%">
                 @foreach($post->categories as $category)
-                    {{$category->category->title}}
+                    {{$category}}
                 @endforeach
             </td>
             <td>{{date('d M, Y - g:i a' ,strtotime($post->created_at))}}</td>
