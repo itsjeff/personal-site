@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Media;
+use App\Models\PostRelationship;
 use Auth;
 use Image;
 
@@ -82,6 +83,11 @@ class PostsController extends Controller
 
                 $post->author_id = Auth::user()->id;
                 $post->save();
+
+                $relationship = new PostRelationship;
+                $relationship->post_id = $post->id;
+                $relationship->category_id = 1;
+                $relationship->save();
 
                 return redirect()->back();
 	}
