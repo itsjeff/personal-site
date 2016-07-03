@@ -20,10 +20,15 @@
         <tr>
             <td width="30%"><a href="{{$moduleUrl}}/{{$post->id}}/edit">{{$post->title}}</a></td>
             <td width="30%">
-                --
+                @foreach($post->categories as $category)
+                    {{$category->category->title}}
+                @endforeach
             </td>
             <td>{{date('d M, Y - g:i a' ,strtotime($post->created_at))}}</td>
-            <td><a href="{{$moduleUrl}}/{{$post->id}}/edit">Edit</a></td>
+            <td>
+                <a href="{{$moduleUrl}}/{{$post->id}}/edit">Edit</a> / 
+                <a href="{{$moduleUrl}}/{{$post->id}}/delete">Delete</a>
+            </td>
         </tr>
     @endforeach
     </tbody>
