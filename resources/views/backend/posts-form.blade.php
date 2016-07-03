@@ -29,7 +29,9 @@
 		<div class="col-xs-12 col-md-4">
 			<h4>Categories</h4>
 			<ul>
-				<li>--</li>
+			@foreach($categories as $category)
+				<li><input type="checkbox" name="category" value=""> {{$category->title}}</li>
+			@endforeach
 			</ul>
 		</div>
 	</div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller as Controller;
 use Illuminate\Http\Request;
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\Media;
 use Auth;
@@ -27,8 +28,9 @@ class PostsController extends Controller
 	 * Instantiate models
 	 * @return void
 	 */
-	public function __construct(Post $post, Media $media)
+	public function __construct(Post $post, Media $media, Category $category)
 	{
+		$this->category = $category;
 		$this->media = $media;
 		$this->post = $post;
 	}
@@ -55,6 +57,7 @@ class PostsController extends Controller
 	{
 		$data = [
 			'moduleUrl' => $this->moduleUrl,
+			'categories' => $this->category->get(),
 			];
 
 		return view('backend.posts-form')->with($data);
@@ -92,6 +95,7 @@ class PostsController extends Controller
 	{
 		$data = [
 			'post' => $this->post->WithTrashed()->find($id),
+			'categories' => $this->category->get(),
 			'moduleUrl' => $this->moduleUrl,
 			];
 
