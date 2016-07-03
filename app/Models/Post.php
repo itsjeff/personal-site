@@ -15,7 +15,7 @@ class Post extends Model
 
 	public function categories()
 	{
-		return $this->hasMany('App\Models\PostRelationship');
+		return $this->belongsToMany('App\Models\Category', 'post_relationships');
 	}
 
 	public function coverimage()
