@@ -43,6 +43,35 @@ class CategoriesController extends Controller
     }
 
     /**
+     * Show form.
+     * @return void
+     */
+    public function create()
+    {
+		$data = [
+			'moduleUrl' => $this->moduleUrl,
+			'categories' => $this->category->get(),
+			];
+
+		return view('backend.category-form')->with($data);
+    }
+
+    /**
+     * Show form.
+     * @return void
+     */
+    public function edit(Request $request, $id)
+    {
+		$data = [
+			'moduleUrl' => $this->moduleUrl,
+			'category' => $this->category->find($id),
+			'categories' => $this->category->get(),
+			];
+
+		return view('backend.category-form')->with($data);
+    }
+
+    /**
      * Store
      * @return [type] [description]
      */

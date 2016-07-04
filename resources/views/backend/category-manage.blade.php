@@ -6,12 +6,6 @@
         <a class="btn btn-primary" href="{{$moduleUrl}}/create">Create</a>
     </div>
 
-	<form method="post">
-	{{csrf_field()}}
-	<input type="text" name="im" placeholder="What is your name?">
-	<button type="submit" name="submit">Send</button>
-	</form>
-
     <table class="table">
     <thead>
         <tr>

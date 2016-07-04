@@ -46,6 +46,8 @@ class PostsController extends Controller
 		$data = [
 			'posts' => $this->post->paginate(15),
 			'moduleUrl' => $this->moduleUrl,
+			'activeRows' => $this->post->count(),
+			'trashedRows' => $this->post->onlyTrashed()->count(),
 			];
 
 		return view('backend.posts-manage')->with($data);

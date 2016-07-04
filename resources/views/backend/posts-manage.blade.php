@@ -3,7 +3,15 @@
 @section('content')
 <div class="container">
     <div class="form-group">
-        <a class="btn btn-primary" href="{{$moduleUrl}}/create">Create</a>
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <a class="btn btn-primary" href="{{$moduleUrl}}/create">Create</a>
+            </div>
+            <div class="col-xs-12 col-md-6 text-xs-right">
+                <a href="{$moduleUrl}}?status=active">Active</a> ({{$activeRows}}) - 
+                <a href="{$moduleUrl}}?status=trashed">Trashed</a> ({{$trashedRows}})
+            </div>
+        </div>
     </div>
 
     <table class="table">
