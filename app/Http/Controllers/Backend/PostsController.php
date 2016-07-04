@@ -14,16 +14,17 @@ use Image;
 class PostsController extends Controller
 {
 	/**
+	 * Module url slug
+	 * @var string
+	 */
+	public $moduleUrl = '/admin/posts';
+	
+	/**
 	 * Models
 	 * @var object
 	 */
 	protected $media;
 	protected $post;
-	/**
-	 * Module url slug
-	 * @var string
-	 */
-	public $moduleUrl = '/admin/posts';
 
 	/**
 	 * Instantiate models
@@ -43,7 +44,7 @@ class PostsController extends Controller
 	public function index()
 	{
 		$data = [
-			'posts' => $this->post->withTrashed()->paginate(15),
+			'posts' => $this->post->paginate(15),
 			'moduleUrl' => $this->moduleUrl,
 			];
 

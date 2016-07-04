@@ -26,7 +26,7 @@
         <tr>
             <td width="30%"><a href="{{$moduleUrl}}/{{$category->id}}/edit">{{$category->title}}</a></td>
             <td width="30%">{{$category->slug}}</td>
-            <td width="30%">{{count($category->postsRelations)}}</td>
+            <td width="30%">{{count($category->posts)}}</td>
             <td><a href="{{$moduleUrl}}/{{$category->id}}/edit">Edit</a></td>
         </tr>
     @endforeach

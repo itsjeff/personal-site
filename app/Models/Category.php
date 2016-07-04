@@ -8,8 +8,8 @@ class Category extends Model
 {
     protected $table = 'category';
 
-    public function postsRelations()
+    public function posts()
     {
-    	return $this->hasMany('App\Models\PostRelationship');
+    	return $this->belongsToMany('App\Models\Post', 'post_relationships');
     }
 }
