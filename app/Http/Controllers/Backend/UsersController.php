@@ -51,7 +51,18 @@ class UsersController extends Controller
      */
     public function create()
     {
-    	$this->pushBreadcrumb('Create', '/create');
+    	$this->pushBreadcrumb('Create user', '/create');
+
+    	return view('backend.user-form')->with($this->data);
+    }
+
+    /**
+     * Show form to edit a user.
+     * @return void
+     */
+    public function edit($id)
+    {
+    	$this->pushBreadcrumb('Edit user', '/create');
 
     	return view('backend.user-form')->with($this->data);
     }

@@ -17,14 +17,17 @@
 		        </div>
 		        <div class="form-group">
 		        	<label class="form-label">Slug</label>
-		        	<input class="form-control" type="text" name="title" value="@if(isset($category) && is_object($category)){{$category->slug}}@endif">
+		        	<input class="form-control" type="text" name="slug" value="@if(isset($category) && is_object($category)){{$category->slug}}@endif">
 		        </div>
 		        <div class="form-group">
 		        	<label class="form-label">Parent category</label>
 		        	<select class="form-control" name="parent_id">
-		        	@foreach($categories as $category)
-		        		<option value="{{$category->id}}">{{$category->title}}</option>
-		        	@endforeach
+		        		<option value="0">--</option>
+			        	@foreach($parents as $parent)
+			        		@if(isset($parent) && is_object($parent) && $parent->id != $category->id)
+			        			<option value="{{$parent->id}}">{{$parent->title}}</option>
+			        		@endif
+			        	@endforeach
 		        	</select>
 		        </div>
 		        <div class="form-group">

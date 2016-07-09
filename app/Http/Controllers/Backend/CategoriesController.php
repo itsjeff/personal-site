@@ -62,13 +62,10 @@ class CategoriesController extends Controller
      */
     public function edit(Request $request, $id)
     {
-		$data = [
-			'moduleUrl' => $this->moduleUrl,
-			'category' => $this->category->find($id),
-			'categories' => $this->category->get(),
-			];
+		$this->setData('category', $this->category->find($id));
+		$this->setData('parents', $this->category->get());
 
-		return view('backend.category-form')->with($data);
+		return view('backend.category-form')->with($this->data);
     }
 
     /**
@@ -77,6 +74,13 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-		//
+		$category = new Category;
+		$category->title = $request->input('title');
+		$category->slug = ($request->has('slug')) ? str_slug($request->input('slug')) : str_slug($request->input('title'));
+		$category->parent_id = ($request->has('parent_id')) ? $request->input('parent_id') : 0;
+		$category->order = 0;
+		$category->save();
+
+		return redirect($this->moduleUrl);
     }
 }

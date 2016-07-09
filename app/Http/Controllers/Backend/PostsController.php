@@ -59,7 +59,7 @@ class PostsController extends Controller
 	 */
 	public function create()
 	{
-		$this->pushBreadcrumb('Create Post');
+		$this->pushBreadcrumb('Create post');
 		$this->setData('categories', $this->category->get());
 
 		return view('backend.posts-form')->with($this->data);
@@ -129,16 +129,6 @@ class PostsController extends Controller
                 $post->save();
 
         return redirect()->back();
-	}
-
-	/**
-	 * Display post
-	 * @param  integer $id Post id
-	 * @return void
-	 */
-	public function show($id)
-	{
-		//
 	}
 
 	/**
