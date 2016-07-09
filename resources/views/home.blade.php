@@ -8,9 +8,8 @@
     <title>Jeffery Nielsen</title>
     <meta name="description" content="Jeffery Nielsen is a Fullstack Web Developer from Sydney, Australia.">
 
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/frontend/css/main.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
-
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

@@ -18,4 +18,12 @@ class Controller extends BaseController
     {
     	$this->data[$tag] = $data;
     }
+
+    public function pushBreadcrumb($name, $url = '')
+    {
+    	$this->data['breadcrumbs'][] = [
+			'name' => $name,
+			'url'  => $url,
+    		];
+    }
 }

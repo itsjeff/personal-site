@@ -2,8 +2,6 @@
 
 @section('content')
 	<div class="container">
-		<h1>Users</h1>
-
 	    <div class="form-group">
 	    	<a class="btn btn-primary" href="{{$moduleUrl}}/create">Create</a>
 	    </div>
@@ -11,11 +9,11 @@
 	    <table class="table">
 	    <thead>
 	        <tr>
-	            <td>#</td>
-	            <td>Name</td>
-	            <td>Email</td>
-	            <td>Created at</td>
-	            <td>Actions</td>
+	            <th>#</th>
+	            <th>Name</th>
+	            <th>Email</th>
+	            <th>Created at</th>
+	            <th>Actions</th>
 	        </tr>
 	    </thead>
 	    <tbody>

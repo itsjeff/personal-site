@@ -32,6 +32,9 @@ class PostsController extends Controller
 	 */
 	public function __construct(Post $post, Media $media, Category $category)
 	{
+		$this->pushBreadcrumb('Posts', $this->moduleUrl);
+		$this->setData('moduleUrl', $this->moduleUrl);
+
 		$this->category = $category;
 		$this->media = $media;
 		$this->post = $post;
@@ -43,14 +46,11 @@ class PostsController extends Controller
 	 */
 	public function index()
 	{
-		$data = [
-			'posts' => $this->post->paginate(15),
-			'moduleUrl' => $this->moduleUrl,
-			'activeRows' => $this->post->count(),
-			'trashedRows' => $this->post->onlyTrashed()->count(),
-			];
+		$this->setData('posts', $this->post->paginate(15));
+		$this->setData('activeRows', $this->post->count());
+		$this->setData('trashedRows', $this->post->onlyTrashed()->count());
 
-		return view('backend.posts-manage')->with($data);
+		return view('backend.posts-manage')->with($this->data);
 	}
 
 	/**
@@ -59,12 +59,10 @@ class PostsController extends Controller
 	 */
 	public function create()
 	{
-		$data = [
-			'moduleUrl' => $this->moduleUrl,
-			'categories' => $this->category->get(),
-			];
+		$this->pushBreadcrumb('Create Post');
+		$this->setData('categories', $this->category->get());
 
-		return view('backend.posts-form')->with($data);
+		return view('backend.posts-form')->with($this->data);
 	}
 
 	/**

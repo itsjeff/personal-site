@@ -27,6 +27,9 @@ class CategoriesController extends Controller
 	 */
 	public function __construct(Category $category)
 	{
+		$this->pushBreadcrumb('Categories', $this->moduleUrl);
+		$this->setData('moduleUrl', $this->moduleUrl);
+
 		$this->category = $category;
 	}
 
@@ -37,7 +40,6 @@ class CategoriesController extends Controller
     public function index()
     {
     	$this->setData('categories', $this->category->get());
-    	$this->setData('moduleUrl', $this->moduleUrl);
 
     	return view('backend.category-manage')->with($this->data);
     }

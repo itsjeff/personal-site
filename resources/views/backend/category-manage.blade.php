@@ -9,10 +9,10 @@
     <table class="table">
     <thead>
         <tr>
-            <td width="30%">Title</td>
-            <td width="30%">Slug</td>
-            <td width="30%">Post count</td>
-            <td>Actions</td>
+            <th width="30%">Title</th>
+            <th width="30%">Slug</th>
+            <th width="30%">Post count</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>

@@ -26,6 +26,9 @@ class UsersController extends Controller
 	 */
 	public function __construct(User $user)
 	{
+		$this->pushBreadcrumb('Users', $this->moduleUrl);
+		$this->setData('moduleUrl', $this->moduleUrl);
+
 		$this->user = $user;
 	}
 
@@ -37,9 +40,19 @@ class UsersController extends Controller
     {
     	$users = $this->user->paginate(15);
 
-    	$this->setData('moduleUrl', $this->moduleUrl);
     	$this->setData('users', $users);
 
     	return view('backend.user-manage')->with($this->data);
+    }
+
+    /**
+     * Show form to create a user.
+     * @return void
+     */
+    public function create()
+    {
+    	$this->pushBreadcrumb('Create', '/create');
+
+    	return view('backend.user-form')->with($this->data);
     }
 }
