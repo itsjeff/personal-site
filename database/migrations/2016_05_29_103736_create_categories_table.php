@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('slug');
             $table->integer('parent_id');
             $table->integer('order');
+            $table->text('description');
             $table->timestamps();
             $table->softDeletes();
         });

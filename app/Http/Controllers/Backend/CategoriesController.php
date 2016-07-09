@@ -50,27 +50,15 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-    	$this->pushBreadcrumb('Create Category');
-    	$this->setData('categories', $this->category->get());
+    	$this->pushBreadcrumb('Create category');
+    	$this->setData('parents', $this->category->get());
 
 		return view('backend.category-form')->with($this->data);
     }
 
     /**
-     * Show form.
+     * Store category.
      * @return void
-     */
-    public function edit(Request $request, $id)
-    {
-		$this->setData('category', $this->category->find($id));
-		$this->setData('parents', $this->category->get());
-
-		return view('backend.category-form')->with($this->data);
-    }
-
-    /**
-     * Store
-     * @return [type] [description]
      */
     public function store(Request $request)
     {
@@ -79,8 +67,32 @@ class CategoriesController extends Controller
 		$category->slug = ($request->has('slug')) ? str_slug($request->input('slug')) : str_slug($request->input('title'));
 		$category->parent_id = ($request->has('parent_id')) ? $request->input('parent_id') : 0;
 		$category->order = 0;
+		$category->description = $request->input('description');
 		$category->save();
 
 		return redirect($this->moduleUrl);
+    }
+
+    /**
+     * Show form to edit category.
+     * @return void
+     */
+    public function edit(Request $request, $id)
+    {
+    	$this->pushBreadcrumb('Edit category');
+		$this->setData('category', $this->category->find($id));
+		$this->setData('parents', $this->category->get());
+
+		return view('backend.category-form')->with($this->data);
+    }
+
+    /**
+     * Delete category.
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function destory($id)
+    {
+    	$this->category->where('id', $id)->delete();
     }
 }

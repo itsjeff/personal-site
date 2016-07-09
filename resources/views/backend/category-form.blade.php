@@ -24,7 +24,9 @@
 		        	<select class="form-control" name="parent_id">
 		        		<option value="0">--</option>
 			        	@foreach($parents as $parent)
-			        		@if(isset($parent) && is_object($parent) && $parent->id != $category->id)
+			        		@if(isset($category) && is_object($category) && $parent->id != $category->id)
+			        			<option value="{{$parent->id}}">{{$parent->title}}</option>
+			        		@else if(!isset($category))
 			        			<option value="{{$parent->id}}">{{$parent->title}}</option>
 			        		@endif
 			        	@endforeach
@@ -32,7 +34,7 @@
 		        </div>
 		        <div class="form-group">
 		        	<label class="form-label">Content</label>
-		        	<textarea class="form-control" rows="7" name="content"></textarea>
+		        	<textarea class="form-control" rows="7" name="description"></textarea>
 		        </div>
 		        <button class="btn btn-primary" type="submit" name="save">Save</button>
 		    </form>
