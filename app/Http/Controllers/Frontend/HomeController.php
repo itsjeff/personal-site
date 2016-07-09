@@ -43,6 +43,6 @@ class HomeController extends Controller
         $this->setData('categories', $categories);
         $this->setData('posts', $posts);
 
-        return view('home')->with($this->data);
+        return view('frontend.home')->with($this->data);
     }
 }
