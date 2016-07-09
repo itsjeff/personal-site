@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Backend</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
     <link rel="stylesheet" href="/assets/icons/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/backend/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/backend/css/main.css">
@@ -21,9 +20,9 @@
                         {{Auth::user()->name}}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <a class="dropdown-item" href="#">Edit profile</a>
+                            <a class="dropdown-item" href="/admin/users/{{Auth::user()->id}}/edit">Edit profile</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Logout</a>
+                            <a class="dropdown-item" href="/logout">Logout</a>
                         </div>
                     </div>
                 </div>

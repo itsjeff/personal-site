@@ -20,7 +20,7 @@
             <th width="30%">Title</th>
             <th width="30%">Categories</th>
             <th>Created at</th>
-            <th>Actions</th>
+            <th class="text-xs-center">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -33,9 +33,9 @@
                 @endforeach
             </td>
             <td>{{date('d M, Y - g:i a' ,strtotime($post->created_at))}}</td>
-            <td>
+            <td class="text-xs-center">
                 <a href="{{$moduleUrl}}/{{$post->id}}/edit">Edit</a> / 
-                <a href="{{$moduleUrl}}/{{$post->id}}/delete">Delete</a>
+                <a href="{{$moduleUrl}}/{{$post->id}}" data-action="ajax-delete">Delete</a>
             </td>
         </tr>
     @endforeach

@@ -50,12 +50,10 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-		$data = [
-			'moduleUrl' => $this->moduleUrl,
-			'categories' => $this->category->get(),
-			];
+    	$this->pushBreadcrumb('Create Category');
+    	$this->setData('categories', $this->category->get());
 
-		return view('backend.category-form')->with($data);
+		return view('backend.category-form')->with($this->data);
     }
 
     /**

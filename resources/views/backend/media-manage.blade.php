@@ -2,15 +2,32 @@
 
 @section('content')
 	<div class="container">
-		<h1>Media</h1>
+	    <div class="form-group">
+	    	<a class="btn btn-primary" href="{{$moduleUrl}}/create">Create</a>
+	    </div>
 
-		<p>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		</p>
+	    <table class="table">
+	    <thead>
+	        <tr>
+	            <th>Name</th>
+	            <th>Type</th>
+	            <th>Created at</th>
+	            <th class="text-xs-center">Actions</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+        @foreach($mediaFiles as $media)
+            <tr>
+                <td><a href="/{{$media->path}}" target="_blank">{{$media->path}}</a></td>
+                <td>{{$media->mime_type}}</td>
+                <td>{{date('d M, Y - g:i a' ,strtotime($media->created_at))}}</td>
+                <td class="text-xs-center">
+                	<a href="{{$moduleUrl}}/{{$media->id}}/edit">Edit</a> / 
+                	<a href="{{$moduleUrl}}/{{$media->id}}" data-action="ajax-delete">Delete</a>
+                </td>
+            </tr>
+        @endforeach
+	    </tbody>
+	    </table>
 	</div>
 @endsection

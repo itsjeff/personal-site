@@ -12,7 +12,7 @@
             <th width="30%">Title</th>
             <th width="30%">Slug</th>
             <th width="30%">Post count</th>
-            <th>Actions</th>
+            <th class="text-xs-center">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -21,7 +21,10 @@
             <td width="30%"><a href="{{$moduleUrl}}/{{$category->id}}/edit">{{$category->title}}</a></td>
             <td width="30%">{{$category->slug}}</td>
             <td width="30%">{{count($category->posts)}}</td>
-            <td><a href="{{$moduleUrl}}/{{$category->id}}/edit">Edit</a></td>
+            <td class="text-xs-center">
+                <a href="{{$moduleUrl}}/{{$category->id}}/edit">Edit</a> / 
+                <a href="{{$moduleUrl}}/{{$category->id}}/edit">Delete</a>
+            </td>
         </tr>
     @endforeach
     </tbody>
