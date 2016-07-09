@@ -33,6 +33,7 @@
                     <li class="nav-item"><a href="{{ url('/admin/categories') }}">Categories</a></li>
                     <li class="nav-item"><a href="{{ url('/admin/media') }}">Media</a></li>
                     <li class="nav-item"><a href="{{ url('/admin/users') }}">Users</a></li>
+                    <li class="nav-item"><a href="{{ url('/admin/groups') }}">Groups</a></li>
                 </ul>
             </div>
         </div>
