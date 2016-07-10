@@ -57,6 +57,15 @@ class UsersController extends Controller
     }
 
     /**
+     * Store new user.
+     * @return void
+     */
+    public function store(Request $request)
+    {
+        echo 'afas';
+    }
+
+    /**
      * Show form to edit a user.
      * @return void
      */
@@ -64,6 +73,28 @@ class UsersController extends Controller
     {
     	$this->pushBreadcrumb('Edit user', '/create');
 
+        $this->setData('user', $this->user->find($id));
+
     	return view('backend.user-form')->with($this->data);
+    }
+
+    /**
+     * Process update and redirect to user profile.
+     * @param  integer  $id  User id
+     * @return void
+     */
+    public function update(Request $request, $id)
+    {
+        $user = $this->user->find($id);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+
+        if ($request->has('password') && $request->has('confirm_password')) {
+            $user->password = $request->input('password');
+        }
+
+        $user->save();
+
+        return redirect()->back();
     }
 }

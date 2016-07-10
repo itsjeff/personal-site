@@ -22,6 +22,9 @@
     color: #fff;
 }
 
+/**
+ * @breadcrumbs
+ */
 .breadcrumbs {
 	background: #e5e5ea;
 }
@@ -57,10 +60,29 @@
 	padding: .7em 0;	
 }
 
+/**
+ * @content
+ */
 .content {
 	margin-top: 1.5em;
 }
 
+/**
+ * @form-control
+ */
+.form-control {
+	box-shadow: inset 1px 1px 1px rgba(0,0,0,.12);
+}
+
+.row > .form-control-label {
+	color: #999;
+	padding-left: .9375rem;
+	padding-right: .9375rem;
+}
+
+/**
+ * @table
+ */
 .table {
 	border: 1px solid #ddd;
 	border-radius: 3px;
