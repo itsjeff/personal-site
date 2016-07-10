@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller as Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\User;
+use Validator;
 
 class UsersController extends Controller
 {
@@ -62,7 +63,24 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        echo 'afas';
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
+            ]);
+
+        if ($validator->fails()) {
+            dd($validator->errors());
+        }
+
+        $user = new User;
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        $user->save();
+
+        return redirect($this->moduleUrl.'/'.$user->id.'/edit');
     }
 
     /**
@@ -85,9 +103,22 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            ]);
+
+        if ($validator->fails()) {
+            dd($validator->errors());
+        }
+
         $user = $this->user->find($id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
+
+        if ($request->file('display_picture')) {
+            echo 'picture';
+        }
 
         if ($request->has('password') && $request->has('confirm_password')) {
             $user->password = $request->input('password');
@@ -95,6 +126,17 @@ class UsersController extends Controller
 
         $user->save();
 
-        return redirect()->back();
+        // return redirect($this->moduleUrl.'/'.$id.'/edit');
+    }
+
+    /**
+     * Upload image and return details.
+     * 
+     * @param  [type] $request [description]
+     * @return [type]          [description]
+     */
+    protected function upload($request)
+    {
+        //
     }
 }

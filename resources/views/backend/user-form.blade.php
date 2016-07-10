@@ -3,11 +3,11 @@
 @section('content')
 	<div class="container">
 	@if(isset($user))
-		<form method="post" action="{{$moduleUrl}}/{{$user->id}}">
+		<form method="post" action="{{$moduleUrl}}/{{$user->id}}" enctype="multipart/form-data">
 			<input type="hidden" name="_method" value="PUT">
 			{{csrf_field()}}
 	@else
-		<form method="post" action="{{$moduleUrl}}">
+		<form method="post" action="{{$moduleUrl}}" enctype="multipart/form-data">
 			{{csrf_field()}}
 	@endif
 
@@ -25,6 +25,14 @@
 					<label class="col-xs-12 col-md-3 form-control-label">Email</label>
 					<div class="col-xs-12 col-md-9">
 						<input class="form-control" type="text" name="email" value="@if(isset($user)){{$user->email}}@endif">
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<label class="col-xs-12 col-md-3 form-control-label">Display picture</label>
+					<div class="col-xs-12 col-md-9">
+						<input class="form-control" type="file" name="display_picture">
 					</div>
 				</div>
 			</div>
@@ -58,7 +66,7 @@
 				<div class="row">
 					<label class="col-xs-12 col-md-3 form-control-label">Confirm Password</label>
 					<div class="col-xs-12 col-md-9">
-						<input class="form-control" type="password" name="confirm_password" value="">
+						<input class="form-control" type="password" name="password_confirmation" value="">
 					</div>
 				</div>
 			</div>
