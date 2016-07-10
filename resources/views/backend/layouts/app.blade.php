@@ -27,12 +27,24 @@
                     </div>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="nav-item"><a href="{{ url('/admin') }}">Dashboard</a></li>
-                    <li class="nav-item"><a href="{{ url('/admin/posts') }}">Posts</a></li>
-                    <li class="nav-item"><a href="{{ url('/admin/categories') }}">Categories</a></li>
-                    <li class="nav-item"><a href="{{ url('/admin/media') }}">Media</a></li>
-                    <li class="nav-item"><a href="{{ url('/admin/users') }}">Users</a></li>
-                    <li class="nav-item"><a href="{{ url('/admin/groups') }}">Groups</a></li>
+                    <li class="nav-item @if(!Request::segment(2)) active @endif">
+                        <a href="{{url('/admin')}}">Dashboard</a>
+                    </li>
+                    <li class="nav-item @if(Request::segment(2) == 'posts') active @endif">
+                        <a href="{{url('/admin/posts')}}">Posts</a>
+                    </li>
+                    <li class="nav-item @if(Request::segment(2) == 'categories') active @endif">
+                        <a href="{{url('/admin/categories')}}">Categories</a>
+                    </li>
+                    <li class="nav-item @if(Request::segment(2) == 'media') active @endif">
+                        <a href="{{url('/admin/media')}}">Media</a>
+                    </li>
+                    <li class="nav-item @if(Request::segment(2) == 'users') active @endif">
+                        <a href="{{url('/admin/users')}}">Users</a>
+                    </li>
+                    <li class="nav-item @if(Request::segment(2) == 'groups') active @endif">
+                        <a href="{{url('/admin/groups')}}">Groups</a>
+                    </li>
                 </ul>
             </div>
         </div>
