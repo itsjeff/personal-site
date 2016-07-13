@@ -134,6 +134,16 @@ class PostsController extends Controller
         return redirect($this->moduleUrl.'/'.$id.'/edit');
     }
 
+
+    /**
+     * Soft delete post.
+     * @return void
+     */
+    public function destroy($id)
+    {
+        $this->post->where('id', $id)->delete();
+    }
+
     /**
      * Upload file
      * @return void
