@@ -52,7 +52,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $this->setData('posts', $this->post->paginate(15));
+        $this->setData('posts', $this->post->Orderly('created_at', 'desc')->paginate(15));
         $this->setData('activeRows', $this->post->count());
         $this->setData('trashedRows', $this->post->onlyTrashed()->count());
 
