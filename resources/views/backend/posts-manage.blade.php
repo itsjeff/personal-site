@@ -28,8 +28,12 @@
         <tr>
             <td width="30%"><a href="{{$moduleUrl}}/{{$post->id}}/edit">{{$post->title}}</a></td>
             <td width="30%">
+                <?php $count = 0; ?>
                 @foreach($post->categories as $category)
-                    {{$category->title}}
+                <?php 
+                echo ($count > 0) ? ', '.$category->title : $category->title;
+                $count++; 
+                ?>
                 @endforeach
             </td>
             <td>{{date('d M, Y - g:i a' ,strtotime($post->created_at))}}</td>

@@ -10,6 +10,8 @@ class PostRelationship extends Model
 
     public $timestamps = false;
 
+    protected $fillable = ['post_id', 'category_id'];
+
     public function post()
     {
     	return $this->belongsTo('App\Models\Post');

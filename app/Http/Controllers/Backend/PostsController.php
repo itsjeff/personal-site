@@ -25,19 +25,25 @@ class PostsController extends Controller
      */
     protected $media;
     protected $post;
+    protected $postRelationship;
 
     /**
      * Instantiate models
      * @return void
      */
-    public function __construct(Post $post, Media $media, Category $category)
-    {
+    public function __construct(
+        Post $post, 
+        Media $media, 
+        Category $category,
+        PostRelationship $postRelationship
+    ) {
         $this->pushBreadcrumb('Posts', $this->moduleUrl);
         $this->setData('moduleUrl', $this->moduleUrl);
 
-        $this->category = $category;
-        $this->media = $media;
         $this->post = $post;
+        $this->media = $media;
+        $this->category = $category;
+        $this->postRelationship = $postRelationship;
     }
 
     /**
@@ -106,8 +112,20 @@ class PostsController extends Controller
     {
         $this->pushBreadcrumb('Edit post');
 
+        $relationships = $this->postRelationship
+            ->select('category_id')
+            ->where('post_id', $id)
+            ->get();
+
+        $currentRelationships = [];
+
+        foreach ($relationships as $relationship) {
+            $currentRelationships[] = $relationship->category_id;
+        }
+
         $this->setData('post', $this->post->WithTrashed()->find($id));
         $this->setData('categories', $this->category->get());
+        $this->setData('categoryRelationships', $currentRelationships);
 
         return view('backend.posts-form')->with($this->data);
     }
@@ -119,6 +137,8 @@ class PostsController extends Controller
      */
     public function update($id, Request $request)
     {
+        $this->setCategoryRelationship($id, $request->input('category'));
+
         $coverImageId = $this->upload($request);
 
         $post = $this->post->find($id);
@@ -179,5 +199,49 @@ class PostsController extends Controller
         }
 
         return 0;
+    }
+
+    /**
+     * Create a post to category relationship.
+     *
+     * @param [type] $categoryIds [description]
+     * @return  array
+     */
+    public function setCategoryRelationship($postId, $categoryIds)
+    {
+        $relationships = $this->postRelationship->where('post_id', $postId)->get();
+        $categoryIds = (!$categoryIds) ? [] : $categoryIds;
+
+        $currentRelationships = [];
+        $removeRelationships = [];
+        $addRelationships = [];
+
+        // Get posts current post to category relationships and add to an array. Also check if any of 
+        // the posts current relationships will be removed, push the primary key id to array.
+        foreach ($relationships as $relationship) {
+            $currentRelationships[] = $relationship->category_id;
+
+            if (!in_array($relationship->category_id, $categoryIds)) {
+                $removeRelationships[] = $relationship->id;
+            }
+        }
+
+        // Loop through submitted categories and push to an array to bulk add new category relationships.
+        foreach ($categoryIds as $categoryId) {
+            if (!in_array($categoryId, $currentRelationships)) {
+                array_push($addRelationships, [
+                    'post_id' => $postId,
+                    'category_id' => $categoryId,
+                    ]);
+            }
+        }
+
+        if (count($addRelationships) > 0) {
+            $this->postRelationship->insert($addRelationships);
+        }
+
+        if (count($removeRelationships) > 0) {
+            $this->postRelationship->whereIn('id', $removeRelationships)->delete();
+        }
     }
 }
