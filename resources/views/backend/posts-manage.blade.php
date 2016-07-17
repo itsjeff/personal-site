@@ -18,8 +18,8 @@
     <thead>
         <tr>
             <th width="30%">Title</th>
-            <th width="30%">Categories</th>
-            <th>Created at</th>
+            <th class="hidden-sm-down" width="30%">Categories</th>
+            <th class="hidden-sm-down">Created at</th>
             <th class="text-xs-center">Actions</th>
         </tr>
     </thead>
@@ -27,7 +27,7 @@
     @foreach ($posts as $post)
         <tr>
             <td width="30%"><a href="{{$moduleUrl}}/{{$post->id}}/edit">{{$post->title}}</a></td>
-            <td width="30%">
+            <td class="hidden-sm-down" width="30%">
                 <?php $count = 0; ?>
                 @foreach($post->categories as $category)
                 <?php 
@@ -36,7 +36,7 @@
                 ?>
                 @endforeach
             </td>
-            <td>{{date('d M, Y - g:i a' ,strtotime($post->created_at))}}</td>
+            <td class="hidden-sm-down">{{date('d M, Y - g:i a' ,strtotime($post->created_at))}}</td>
             <td class="text-xs-center">
                 <a href="{{$moduleUrl}}/{{$post->id}}/edit">Edit</a> / 
                 <a href="{{$moduleUrl}}/{{$post->id}}" data-action="ajax-delete">Delete</a>
