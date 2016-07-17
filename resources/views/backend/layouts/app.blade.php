@@ -13,7 +13,7 @@
 <body id="app-layout">
     <nav class="navbar">
         <div class="container">
-            <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+            <div id="exCollapsingNavbar2">
                 <div class="pull-xs-right">
                     <div class="dropdown">
                         <button class="auth-user dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
