@@ -4,12 +4,12 @@
 <div class="container">
     <div class="form-group">
         <div class="row">
-            <div class="col-xs-12 col-md-6">
+            <div class="col-xs-6">
                 <a class="btn btn-primary" href="{{$moduleUrl}}/create">Create</a>
             </div>
-            <div class="col-xs-12 col-md-6 text-xs-right">
-                <a href="{$moduleUrl}}?status=active">Active</a> ({{$activeRows}}) - 
-                <a href="{$moduleUrl}}?status=trashed">Trashed</a> ({{$trashedRows}})
+            <div class="col-xs-6 text-xs-right">
+                <a href="{{$moduleUrl}}?status=active">Active</a> ({{$activeRows}}) - 
+                <a href="{{$moduleUrl}}?status=trashed">Trashed</a> ({{$trashedRows}})
             </div>
         </div>
     </div>
