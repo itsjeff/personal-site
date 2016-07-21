@@ -120,3 +120,10 @@
 .table tbody td:not(:first-child) {
 	border-left: 1px solid #eceeef
 }
+
+/**
+ * popover
+ */
+.popover {
+	display: none;
+}

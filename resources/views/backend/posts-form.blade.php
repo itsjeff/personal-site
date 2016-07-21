@@ -21,7 +21,7 @@
 		        </div>
 		        <div class="form-group">
 		        	<label class="form-label">Content</label>
-		        	<textarea class="form-control" rows="7" name="content">@if(isset($post) && is_object($post)){{$post->content}}@endif</textarea>
+		        	<textarea id="summernote" rows="7" name="content">@if(isset($post) && is_object($post)){{$post->content}}@endif</textarea>
 		        </div>
 		        <button class="btn btn-primary" type="submit" name="save">Save</button>
 			</div>

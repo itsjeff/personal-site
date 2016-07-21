@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Backend</title>
+
+	<link rel="stylesheet" href="/assets/scripts/summernote/summernote.css">
     <link rel="stylesheet" href="/assets/icons/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/backend/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/backend/css/main.css">
@@ -78,6 +80,21 @@
 
     <!-- JavaScripts -->
     <script src="/assets/scripts/jquery-2.2.4.min.js"></script>
-    <script src="/assets/backend/js/bootstrap.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+    <script src="/assets/scripts/summernote/summernote.min.js"></script>
+
+	<script>
+	$(document).ready(function() {
+		$('#summernote').summernote({
+		height: 200,
+		toolbar: [
+			['style', ['bold', 'italic', 'underline', 'clear']],
+			['font', ['strikethrough', 'superscript', 'subscript']],
+			['fontsize', ['fontsize']],
+			['para', ['ul', 'ol', 'paragraph']],
+		]
+		});
+	});
+	</script>
 </body>
 </html>
