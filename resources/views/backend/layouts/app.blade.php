@@ -80,7 +80,7 @@
 
     <!-- JavaScripts -->
     <script src="/assets/scripts/jquery-2.2.4.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
     <script src="/assets/scripts/summernote/summernote.min.js"></script>
 
 	<script>
