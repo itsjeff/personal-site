@@ -9,7 +9,7 @@
         </div>
         @if($post->cover_image > 0)
             <div class="post-coverimage">
-                <img src="{{$post->coverimage->path}}" style="width: 100%; max-width: 100%;">
+                <img src="/{{$post->coverimage->path}}" style="width: 100%; max-width: 100%;">
             </div>
         @endif
         <div class="post-content">
