@@ -1,6 +1,8 @@
 @extends('frontend.layouts.master')
 
 @section('content')
+    Posts from: 
+    <h1>{{$category->title}}</h1>
 
     @if (count($posts) > 0)
         @foreach ($posts as $post)

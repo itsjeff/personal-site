@@ -33,6 +33,7 @@ class HomeController extends Controller
     public function __construct(Post $post, Category $category)
     {
         $this->posts = $post;
+        
         $this->category = $category;
     }
 
@@ -44,7 +45,9 @@ class HomeController extends Controller
     public function index()
     {
         $total_posts = $this->posts->count();
+
         $posts = $this->posts->orderBy('created_at', 'DESC')->paginate($this->paginate);
+
         $categories = $this->category->get();
 
         $this->setData('total_posts', $total_posts);

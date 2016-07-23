@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
 use App\Models\Category;
-use App\Models\Post;
 
 class CategoriesController extends Controller
 {
@@ -14,20 +13,20 @@ class CategoriesController extends Controller
      * @param integer  $paginate  Set records per page
      */
     public $paginate = 15;
-    
+
     /**
-     * Post model
+     * Category model
      */
-    protected $posts;
+    protected $category;
 
     /**
      * Instantiate.
      *
      * @return void
      */
-    public function __construct(Post $post)
+    public function __construct(Category $category)
     {
-        $this->posts = $post;
+        $this->category = $category;
     }
 
     /**
@@ -48,8 +47,15 @@ class CategoriesController extends Controller
      */
     public function show($slug)
     {
-    	$posts = $this->posts->orderBy('created_at', 'DESC')->paginate($this->paginate);
+        $selectedCategory = $this->category->select('id')->where('slug', $slug)->first();
+
+    	$category = $this->category->find($selectedCategory->id);
+
+        $posts = $category
+            ->posts()
+            ->paginate($this->paginate);
     	
+        $this->setData('category', $category);
         $this->setData('posts', $posts);
 
         return view('frontend.category')->with($this->data);
