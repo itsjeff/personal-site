@@ -27,7 +27,7 @@
     @foreach ($posts as $post)
         <tr>
             <td width="30%">
-                <a href="{{$moduleUrl}}/{{$post->id}}/edit">{{$post->title}}</a>
+                <span class="type">{{$post->type}}:</span> <a href="{{$moduleUrl}}/{{$post->id}}/edit">{{$post->title}}</a>
                 <div class="hidden-md-up">{{date('d M, Y - g:i a' ,strtotime($post->created_at))}}</div>
             </td>
             <td class="hidden-sm-down" width="30%">

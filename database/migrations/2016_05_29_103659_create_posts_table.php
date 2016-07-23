@@ -19,7 +19,8 @@ class CreatePostsTable extends Migration
             $table->text('content');
             $table->integer('author_id');
             $table->integer('cover_image');
-            $table->string('status');
+            $table->string('type');
+            $table->timestamp('publish_at');
             $table->timestamps();
             $table->softDeletes();
         });

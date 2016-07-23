@@ -2,23 +2,31 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller as Controller;
-use App\Http\Requests;
-use App\Models\Post;
-use App\Models\Category;
 use Illuminate\Http\Request;
-use DB;
+use App\Http\Controllers\Controller as Controller;
+use App\Models\Category;
+use App\Models\Post;
 
 class HomeController extends Controller
 {
     /**
-     * Models
+     * Paginate
+     * @param integer  $paginate  Set records per page
+     */
+    public $paginate = 15;
+
+    /**
+     * Post model
      */
     protected $posts;
+
+    /**
+     * Category model
+     */
     protected $category;
 
     /**
-     * Create a new controller instance.
+     * Instantiate.
      *
      * @return void
      */
@@ -36,7 +44,7 @@ class HomeController extends Controller
     public function index()
     {
         $total_posts = $this->posts->count();
-        $posts = $this->posts->orderBy('created_at', 'DESC')->get();
+        $posts = $this->posts->orderBy('created_at', 'DESC')->paginate($this->paginate);
         $categories = $this->category->get();
 
         $this->setData('total_posts', $total_posts);

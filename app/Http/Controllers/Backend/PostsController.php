@@ -67,6 +67,7 @@ class PostsController extends Controller
     {
         $this->pushBreadcrumb('Create post');
         $this->setData('categories', $this->category->get());
+        $this->setData('categoryRelationships', []);
 
         return view('backend.posts-form')->with($this->data);
     }
@@ -89,13 +90,15 @@ class PostsController extends Controller
         }
 
         $post->author_id = Auth::user()->id;
+        $post->type = $request->input('type');
         $post->save();
 
         // Create a post to category relationship
-        $relationship = new PostRelationship;
-        $relationship->post_id = $post->id;
-        $relationship->category_id = 1;
-        $relationship->save();
+        if ($request->has('category')) {
+            $this->setCategoryRelationship($post->id, $request->input('category'));
+        } else {
+            $this->setCategoryRelationship($post->id, [1]);
+        }
 
         // Redirect with success message
         $success = true;
@@ -137,8 +140,6 @@ class PostsController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->setCategoryRelationship($id, $request->input('category'));
-
         $coverImageId = $this->upload($request);
 
         $post = $this->post->find($id);
@@ -150,6 +151,13 @@ class PostsController extends Controller
         }
 
         $post->save();
+
+        // Update post to category relationships. If the user removes all categories from post, then default to category 1.
+        if ($request->has('category')) {
+            $this->setCategoryRelationship($post->id, $request->input('category'));
+        } else {
+            $this->setCategoryRelationship($post->id, [1]);
+        }
 
         return redirect($this->moduleUrl.'/'.$id.'/edit');
     }

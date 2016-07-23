@@ -28,7 +28,7 @@
 			<div class="col-xs-12 col-md-4">
 				<div class="form-group">
 					<h5>Publish as</h5>
-					<select class="form-control" name="publish-as">
+					<select class="form-control" name="type">
 						<option value="post">Post</option>
 						<option value="draft">Draft</option>
 					</select>
