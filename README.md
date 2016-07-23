@@ -2,6 +2,7 @@
 
 ### Table of contents
 - Features
+- Installation
 - To do list
 
 ## Features
@@ -10,5 +11,8 @@
 - Manage users
 - Manage user groups
 - Manage media
+
+## Installation
+Coming soon.
 
 ## To do list
