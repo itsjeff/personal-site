@@ -28,6 +28,7 @@ class CategoriesController extends Controller
 	public function __construct(Category $category)
 	{
 		$this->pushBreadcrumb('Categories', $this->moduleUrl);
+        
 		$this->setData('moduleUrl', $this->moduleUrl);
 
 		$this->category = $category;
