@@ -14,13 +14,13 @@
 /**
  * Backend
  */
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
-	Route::get('/', 'Backend\DashboardController@index');
-	Route::resource('posts', 'Backend\PostsController');
-	Route::resource('media', 'Backend\MediaController');
-	Route::resource('categories', 'Backend\CategoriesController');
-	Route::resource('users', 'Backend\UsersController');
-	Route::resource('user-groups', 'Backend\UserGroupsController');
+Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Backend'], function() {
+	Route::get('/', 'DashboardController@index');
+	Route::resource('posts', 'PostsController');
+	Route::resource('media', 'MediaController');
+	Route::resource('categories', 'CategoriesController');
+	Route::resource('users', 'UsersController');
+	Route::resource('groups', 'UserGroupsController');
 });
 
 /**
