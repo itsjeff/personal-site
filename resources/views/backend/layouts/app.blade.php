@@ -81,20 +81,11 @@
     <!-- JavaScripts -->
     <script src="/assets/scripts/jquery-2.2.4.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
-    <script src="/assets/scripts/summernote/summernote.min.js"></script>
-
-	<script>
-	$(document).ready(function() {
-		$('#summernote').summernote({
-		height: 200,
-		toolbar: [
-			['style', ['bold', 'italic', 'underline', 'clear']],
-			['font', ['strikethrough', 'superscript', 'subscript']],
-			['fontsize', ['fontsize']],
-			['para', ['ul', 'ol', 'paragraph']],
-		]
-		});
-	});
-	</script>
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script>
+    tinymce.init({
+        selector:'textarea'
+    });
+    </script>
 </body>
 </html>
