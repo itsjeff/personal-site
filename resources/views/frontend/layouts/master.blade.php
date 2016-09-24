@@ -24,15 +24,13 @@
     <div class="nav">
         <div class="container">
             <div class="branding">
-                <h1>Jeffery Nielsen</h1>
+                <h1><a href="/" title="Home">Jeffery Nielsen</a></h1>
                 <span>Web Developer from NSW, Australia</span>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        @yield('content')
-    </div>
+    @yield('content')
 </body>
 </html>
       

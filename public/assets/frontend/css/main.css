@@ -68,11 +68,16 @@ code {
   background: #3f6dff;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
   color: #fff;
+  margin-bottom: 1.5em;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
 }
 
 .nav .branding {
   padding: .8em 0;
-  margin-bottom: 1.5em;
 }
 
 .nav .branding h1 {
@@ -83,6 +88,17 @@ code {
 
 .nav .branding span {
   font-size: .8em;
+}
+
+/* @heading */
+.heading {
+  margin-bottom: 2em;
+}
+
+.heading h1 {
+  font-size: 1.2em;
+  font-weight: 500;
+  margin: 0;
 }
 
 /* @post */
@@ -107,7 +123,7 @@ code {
 
 .post-title h3 {
   margin: 0;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .post-title a {
@@ -124,7 +140,7 @@ code {
 }
 
 .post-content {
-  padding: 1em 0 0;
+  padding: .5em 0 0;
 }
 
 .post-content p {
@@ -133,37 +149,33 @@ code {
 }
 
 /* @panel-block */
-.panel-block {
-  position: relative;
-  margin-bottom: 1.3em;
-  padding-bottom: 1.3em;
+.secondary-row {
+  padding-bottom: 1.5em;
+  margin-bottom: 1.5em;
 }
 
-.panel-block-heading {
-  color: #60626B;
-  font-weight: 500;
-  margin-bottom: 1em;
-}
-
-.panel-block-body {
+.secondary-row .categories ul {
+  list-style: none;
   margin: 0;
+  padding: 0;
 }
 
-.panel-block-body li:not(:first-child) {
-  margin-top: .5em;
-}
-
-.panel-block::after {
+.secondary-row .categories ul:after {
   content: '';
-  display: block;
-  border-bottom: 1px solid rgba(0,0,0,.2);
-  width: 20px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  display: table;
+  clear: both;
 }
 
+.secondary-row .categories li {
+  float: left;
+  list-style: none;
+  margin: 0 1em 0 0;
+  padding: 0;
+}
 
+.secondary-row .categories a {
+  color: #222;
+}
 
 @media(max-width: 47.9em) {
   .container {
