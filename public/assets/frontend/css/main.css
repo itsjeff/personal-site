@@ -182,16 +182,7 @@ code {
     padding: 0 1em;
    }
 
-  .welcome {
-   width: 100%;
-   position: static;
-  }
-
   .content {
    padding: 0;
-  }
-
-  .post {
-    margin-bottom: 1em;
   }
 }
