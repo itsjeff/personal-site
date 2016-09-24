@@ -53,6 +53,7 @@ class CategoriesController extends Controller
 
         $posts = $category
             ->posts()
+            ->orderBy('created_at', 'DESC')
             ->paginate($this->paginate);
     	
         $this->setData('category', $category);
