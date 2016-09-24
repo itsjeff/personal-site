@@ -8,9 +8,9 @@ html {
 }
 
 body {
-  background: #e5eaee;
+  background: #fff;
   color: #222;
-  font-family: 'Roboto', 'sans-serif';
+  font-family: 'arial', 'sans-serif';
   margin: 0;
   padding: 0;
 }
@@ -40,34 +40,47 @@ a:hover {
   color: #111;
 }
 
+h1, h2, h3. h4. h5 {
+  font-family: 'Roboto', sans-serif;
+}
+
 /* @container */
 .container {
   max-width: 1000px;
-  margin: 1em auto;
+  margin: 0 auto;
+  padding: 0 .75em;
   position: relative;
 }
 
-.welcome {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 300px;
+.nav {
+  background: #3f6dff;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  color: #fff;
 }
 
-.content {
-  padding-left: 330px;
+.nav .branding {
+  padding: .8em 0;
+  margin-bottom: 1.5em;
+}
+
+.nav .branding h1 {
+  font-weight: 500;
+  font-size: 1.4em;
+  margin-bottom: .2em;
+}
+
+.nav .branding span {
+  font-size: .8em;
 }
 
 /* @post */
 .post {
-  background: #fff;
-  border-radius: 4px;
-  box-shadow: 0 1px 2px rgba(0,0,0,.12);
   margin-bottom: 1.5em;
 }
 
 .post-coverimage {
   margin-top: 1em;
+  display: none;
 }
 
 .post-coverimage img {
@@ -75,7 +88,7 @@ a:hover {
 }
 
 .post-title {
-  padding: 1em 1em 0;
+  padding: 1em 0 0;
 }
 
 .post-title h3 {
@@ -97,29 +110,12 @@ a:hover {
 }
 
 .post-content {
-  padding: 1em;
+  padding: 1em 0;
 }
 
 .post-content p {
   margin: 0;
-  font-family: georgia, sans-serif;
-  font-size: 1.1em;
-}
-
-/* @branding */
-.branding {
-  margin-bottom: 2em;
-}
-
-.branding h1 {
-  font-weight: 500;
-  margin: 0 0 .3em;
-}
-
-/* @feeling */
-.feeling {
-  font-style: italic;
-  margin-bottom: 2em;
+  font-size: 1em;
 }
 
 /* @panel-block */

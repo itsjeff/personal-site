@@ -4,24 +4,6 @@
 
     <div class="content">
         <div class="welcome">
-            <div class="branding">
-                <h1>Jeffery Nielsen</h1>
-                <span>Web Developer from NSW, Australia</span>
-            </div>
-
-            <div class="feeling">
-                Feeling fine and dandy
-            </div>
-
-            <div class="panel-block">
-                <div class="panel-block-heading">
-                    Other Places
-                </div>
-                <ul class="panel-block-body">
-                    <li><a href="https://github.com/itsjeff" title="Jeffery Nielsen @ Github" target="_blank">itsjeff@Github</a></li>
-                </ul>
-            </div>
-
             <div class="panel-block">
                 <div class="panel-block-heading">
                     Categories

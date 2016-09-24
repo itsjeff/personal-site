@@ -21,6 +21,15 @@
     </script>
 </head>
 <body>
+    <div class="nav">
+        <div class="container">
+            <div class="branding">
+                <h1>Jeffery Nielsen</h1>
+                <span>Web Developer from NSW, Australia</span>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         @yield('content')
     </div>
