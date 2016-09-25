@@ -159,6 +159,12 @@ code {
   font-size: 1em;
 }
 
+.post-content li {
+    margin-bottom: .6em;
+    list-style: square;
+    line-height: 1.6em;
+}
+
 /* @panel-block */
 .secondary-row {
   padding-bottom: 1.5em;
