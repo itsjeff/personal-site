@@ -23,9 +23,12 @@
 <body>
     <div class="nav">
         <div class="container">
+            <div class="me">
+                <a href="https://github.com/itsjeff" title="View my projects @ Github" target="_blank">GitHub</a>
+            </div>
             <div class="branding">
                 <h1><a href="/" title="Home">Jeffery Nielsen</a></h1>
-                <span>Web Developer from NSW, Australia</span>
+                <span>Web Developer from Sydney, Australia</span>
             </div>
         </div>
     </div>

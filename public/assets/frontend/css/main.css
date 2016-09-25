@@ -91,6 +91,11 @@ code {
   font-size: .8em;
 }
 
+.nav .me {
+  float: right;
+  padding-top: 1.75em;
+}
+
 /* @heading */
 .heading {
   margin-bottom: 2em;
