@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Language" content="en">
     <meta name="viewport" content="width=device-width">
 
-    <title>{{$title}}Jeffery Nielsen</title>
+    <title>{{($title) ? $title.' | ' : ''}}Jeffery Nielsen</title>
     <meta name="description" content="Jeffery Nielsen is a Fullstack Web Developer from Sydney, Australia.">
 
     <link rel="stylesheet" href="/assets/frontend/css/main.css">
