@@ -58,6 +58,7 @@ class CategoriesController extends Controller
     	
         $this->setData('category', $category);
         $this->setData('posts', $posts);
+        $this->setData('title', $category->title);
 
         return view('frontend.category')->with($this->data);
     }
