@@ -12,7 +12,9 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
 
-    protected $data = [];
+    protected $data = [
+	'title' => '',
+    	];
 
     public function setData($tag, $data)
     {
