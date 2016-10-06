@@ -36,6 +36,8 @@ class PostsController extends Controller
     		->first();
 
         $this->setData('post', $post);
+	    
+	$this->setData('title', $post->title);
 
         return view('frontend.post')->with($this->data);
     }
