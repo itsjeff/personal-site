@@ -68,9 +68,7 @@ class UserGroupsController extends Controller
     {
        $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed',
-            'password_confirmation' => 'required',
+            'tag' => 'required',
             ]);
 
         if ($validator->fails()) {
