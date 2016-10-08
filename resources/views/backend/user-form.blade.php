@@ -47,7 +47,9 @@
 					<label class="col-xs-12 col-md-3 form-control-label">User group</label>
 					<div class="col-xs-12 col-md-9">
 						<select class="form-control" name="role">
-							<option value="1">Admin</option>
+							@foreach($userGroups as $userGroup)
+							<option value="{{$userGroup->id}}">{{$userGroup->name}}</option>
+							@endforeach
 						</select>
 					</div>
 				</div>
