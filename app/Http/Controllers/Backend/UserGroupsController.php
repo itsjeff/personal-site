@@ -81,7 +81,7 @@ class UserGroupsController extends Controller
             ]);
 
         return redirect($this->moduleUrl.'/'.$userGroup->id.'/edit')->with([
-            'success' => 'User group successfully created.',
+            'status' => 'User group successfully created.',
             ]);
     }
 
@@ -127,7 +127,7 @@ class UserGroupsController extends Controller
                 ]);
 
         return redirect()->back()->with([
-            'success' => 'User group successfully updated.',
+            'status' => 'User group successfully updated.',
             ]);
     }
 }
