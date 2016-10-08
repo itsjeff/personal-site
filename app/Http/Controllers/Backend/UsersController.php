@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Models\User;
 use App\Models\UserGroup;
 use Validator;
+use DB;
 
 class UsersController extends Controller
 {
@@ -136,6 +137,10 @@ class UsersController extends Controller
             $this->uploadDisplayPicture($request);
         }
 
+        if ($request->has('group')) {
+            $this->setUserGroup($id, $request->input('group'));
+        }
+
         if ($request->has('password') && $request->has('password_confirmation')) {
             $user['password'] = bcrypt($request->input('password'));
 
@@ -164,5 +169,29 @@ class UsersController extends Controller
     protected function uploadDisplayPicture($request)
     {
         //
+    }
+
+    /**
+     * Set group that user belongs to.
+     *
+     * @param  integer $userId User id
+     * @param  integer $groupId User group id
+     * @return void
+     */
+    protected function setUsergroup($userId, $groupId)
+    {
+        $userInGroup = DB::table('user_in_group')->where('user_id', $userId);
+
+        if (is_object($userInGroup->first())) {
+            $userInGroup->update([
+                'user_group_id' => $groupId
+                ]);
+        }
+        else {
+            DB::table('user_in_group')->insert([
+                'user_id' => $userId,
+                'user_group_id' => $groupId,
+                ]);
+        }
     }
 }
