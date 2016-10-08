@@ -2,6 +2,12 @@
 
 @section('content')
 	<div class="container">
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{session('status')}}
+        </div>
+    @endif
+
 	@if(isset($user))
 		<form method="post" action="{{$moduleUrl}}/{{$user->id}}" enctype="multipart/form-data">
 			<input type="hidden" name="_method" value="PUT">

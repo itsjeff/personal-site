@@ -109,26 +109,42 @@ class UsersController extends Controller
             ]);
 
         if ($validator->fails()) {
-            dd($validator->errors());
+            if ($request->ajax()) {
+                return response()->json($validator->errors());
+            }
+
+            return redirect()->back();
         }
 
+        $statusMessage = 'Profile successfully updated.';
+
         $user = [];
+
         $user['name'] = $request->input('name');
+
         $user['email'] = $request->input('email');
 
         if ($request->file('display_picture')) {
             $this->uploadDisplayPicture($request);
         }
 
-        if ($request->has('password') && $request->has('confirm_password')) {
+        if ($request->has('password') && $request->has('password_confirmation')) {
             $user['password'] = bcrypt($request->input('password'));
+
+            $statusMessage = 'Profile and password successfully updated.';
         }
-        dd($user);
 
-        $this->user
-            ->where('id', $id)
-            ->update($user);
-
+        $this->user->where('id', $id)->update($user);
+        
+        if ($request->ajax()) {
+            return response()->json([
+                $statusMessage
+                ]);
+        }
+        
+        return redirect()->back()->with([
+            'status' => $statusMessage
+            ]);
     }
 
     /**
