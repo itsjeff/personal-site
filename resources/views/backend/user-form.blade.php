@@ -2,20 +2,20 @@
 
 @section('content')
 	<div class="container">
-    @if (session('status'))
+    	@if (session('status'))
         <div class="alert alert-success">
             {{session('status')}}
         </div>
-    @endif
+    	@endif
 
-	@if(isset($user))
+		@if(isset($user))
 		<form method="post" action="{{$moduleUrl}}/{{$user->id}}" enctype="multipart/form-data">
 			<input type="hidden" name="_method" value="PUT">
 			{{csrf_field()}}
-	@else
+		@else
 		<form method="post" action="{{$moduleUrl}}" enctype="multipart/form-data">
 			{{csrf_field()}}
-	@endif
+		@endif
 
 			<h4 class="form-group">Personal details</h4>
 			<div class="form-group">
