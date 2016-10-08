@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller as Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\User;
+use App\Models\UserGroup;
 use Validator;
 
 class UsersController extends Controller
@@ -25,12 +26,15 @@ class UsersController extends Controller
     /**
      * Instantiate
      */
-    public function __construct(User $user)
+    public function __construct(User $user, UserGroup $userGroup)
     {
         $this->pushBreadcrumb('Users', $this->moduleUrl);
+        
         $this->setData('moduleUrl', $this->moduleUrl);
 
         $this->user = $user;
+        
+        $this->userGroup = $userGroup;
     }
 
     /**
@@ -53,6 +57,8 @@ class UsersController extends Controller
     public function create()
     {
         $this->pushBreadcrumb('Create user', '/create');
+
+        $this->setData('userGroups', $this->userGroup->get());
 
         return view('backend.user-form')->with($this->data);
     }
@@ -92,6 +98,8 @@ class UsersController extends Controller
         $this->pushBreadcrumb('Edit user', '/create');
 
         $this->setData('user', $this->user->find($id));
+
+        $this->setData('userGroups', $this->userGroup->get());
 
         return view('backend.user-form')->with($this->data);
     }
