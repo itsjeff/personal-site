@@ -10,40 +10,40 @@ use Validator;
 
 class UsersController extends Controller
 {
-	/**
-	 * Module url slug
-	 * @var string
-	 */
-	public $moduleUrl = '/admin/users';
+    /**
+     * Module url slug
+     * @var string
+     */
+    public $moduleUrl = '/admin/users';
 
-	/**
-	 * User model
-	 * @var collection
-	 */
-	protected $user;
+    /**
+     * User model
+     * @var collection
+     */
+    protected $user;
 
-	/**
-	 * Instantiate
-	 */
-	public function __construct(User $user)
-	{
-		$this->pushBreadcrumb('Users', $this->moduleUrl);
-		$this->setData('moduleUrl', $this->moduleUrl);
+    /**
+     * Instantiate
+     */
+    public function __construct(User $user)
+    {
+        $this->pushBreadcrumb('Users', $this->moduleUrl);
+        $this->setData('moduleUrl', $this->moduleUrl);
 
-		$this->user = $user;
-	}
+        $this->user = $user;
+    }
 
-	/**
-	 * Displays users.
-	 * @return void
-	 */
+    /**
+     * Displays users.
+     * @return void
+     */
     public function index()
     {
-    	$users = $this->user->paginate($this->paginate);
+        $users = $this->user->paginate($this->paginate);
 
-    	$this->setData('users', $users);
+        $this->setData('users', $users);
 
-    	return view('backend.user-manage')->with($this->data);
+        return view('backend.user-manage')->with($this->data);
     }
 
     /**
@@ -52,9 +52,9 @@ class UsersController extends Controller
      */
     public function create()
     {
-    	$this->pushBreadcrumb('Create user', '/create');
+        $this->pushBreadcrumb('Create user', '/create');
 
-    	return view('backend.user-form')->with($this->data);
+        return view('backend.user-form')->with($this->data);
     }
 
     /**
@@ -89,11 +89,11 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-    	$this->pushBreadcrumb('Edit user', '/create');
+        $this->pushBreadcrumb('Edit user', '/create');
 
         $this->setData('user', $this->user->find($id));
 
-    	return view('backend.user-form')->with($this->data);
+        return view('backend.user-form')->with($this->data);
     }
 
     /**
