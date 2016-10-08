@@ -13,7 +13,7 @@
 	            <th>Email</th>
 	            <th>User group</th>
 	            <th>Created at</th>
-	            <th class="text-xs-center">Actions</th>
+	            <th width="10%" class="text-xs-center">Actions</th>
 	        </tr>
 	    </thead>
 	    <tbody>
@@ -23,7 +23,7 @@
 	                <td>{{$user->email}}</td>
 	                <td>{{$user->id}}</td>
 	                <td>{{date('d M, Y - g:i a' ,strtotime($user->created_at))}}</td>
-	                <td class="text-xs-center">
+	                <td width="10%" class="text-xs-center">
 	                	<a href="{{$moduleUrl}}/{{$user->id}}/edit">Edit</a> / 
 	                	<a href="{{$moduleUrl}}/{{$user->id}}/edit">Delete</a>
 	                </td>
