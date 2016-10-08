@@ -75,12 +75,14 @@ class UserGroupsController extends Controller
             dd($validator->errors());
         }
 
-        $this->userGroup->create([
+        $userGroup = $this->userGroup->create([
             'name' => $request->input('name'),
             'tag' => $request->input('tag'),
             ]);
 
-        echo 'User group created';
+        return redirect($this->moduleUrl.'/'.$userGroup->id.'/edit')->with([
+            'success' => 'User group successfully created.',
+            ]);
     }
 
     /**
