@@ -34,12 +34,12 @@ class UsersController extends Controller
 	}
 
 	/**
-	 * Displays users
+	 * Displays users.
 	 * @return void
 	 */
     public function index()
     {
-    	$users = $this->user->paginate(15);
+    	$users = $this->user->paginate($this->paginate);
 
     	$this->setData('users', $users);
 
@@ -112,21 +112,23 @@ class UsersController extends Controller
             dd($validator->errors());
         }
 
-        $user = $this->user->find($id);
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
+        $user = [];
+        $user['name'] = $request->input('name');
+        $user['email'] = $request->input('email');
 
         if ($request->file('display_picture')) {
-            echo 'picture';
+            $this->uploadDisplayPicture($request);
         }
 
         if ($request->has('password') && $request->has('confirm_password')) {
-            $user->password = $request->input('password');
+            $user['password'] = bcrypt($request->input('password'));
         }
+        dd($user);
 
-        $user->save();
+        $this->user
+            ->where('id', $id)
+            ->update($user);
 
-        // return redirect($this->moduleUrl.'/'.$id.'/edit');
     }
 
     /**
@@ -135,7 +137,7 @@ class UsersController extends Controller
      * @param  [type] $request [description]
      * @return [type]          [description]
      */
-    protected function upload($request)
+    protected function uploadDisplayPicture($request)
     {
         //
     }

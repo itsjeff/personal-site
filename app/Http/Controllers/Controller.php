@@ -13,19 +13,21 @@ class Controller extends BaseController
     use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
 
     protected $data = [
-	'title' => '',
-    	];
+       'title' => '',
+        ];
+
+    public $paginate = 20;
 
     public function setData($tag, $data)
     {
-    	$this->data[$tag] = $data;
+        $this->data[$tag] = $data;
     }
 
     public function pushBreadcrumb($name, $url = '')
     {
-    	$this->data['breadcrumbs'][] = [
-			'name' => $name,
-			'url'  => $url,
-    		];
+        $this->data['breadcrumbs'][] = [
+            'name' => $name,
+            'url'  => $url,
+            ];
     }
 }
