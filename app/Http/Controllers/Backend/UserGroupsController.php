@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller as Controller;
 use App\Models\UserGroup;
 use Illuminate\Http\Request;
+use Validator;
 
 class UserGroupsController extends Controller
 {
@@ -48,6 +49,7 @@ class UserGroupsController extends Controller
 
     /**
      * Show form to create new user group.
+     *
      * @return void
      */
     public function create()
@@ -59,10 +61,22 @@ class UserGroupsController extends Controller
 
     /**
      * Process new user group creation.
+     *
      * @return void|json
      */
     public function store(Request $request)
     {
+       $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
+            ]);
+
+        if ($validator->fails()) {
+            dd($validator->errors());
+        }
+
         $this->userGroup->create([
             'name' => $request->input('name'),
             'tag' => $request->input('tag'),
@@ -73,6 +87,7 @@ class UserGroupsController extends Controller
 
     /**
      * Show form to create new user group.
+     *
      * @return void
      */
     public function edit($id)
@@ -84,5 +99,35 @@ class UserGroupsController extends Controller
         $this->setData('userGroup', $userGroup);
 
         return view('backend.usergroup-form')->with($this->data);
+    }
+
+    /**
+     * Process group update.
+     *
+     * @param  Request $request [description]
+     * @param  [type]  $id      [description]
+     * @return [type]           [description]
+     */
+    public function update(Request $request, $id)
+    {
+       $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'tag' => 'required',
+            ]);
+
+        if ($validator->fails()) {
+            dd($validator->errors());
+        }
+
+        $this->userGroup
+            ->where('id', $id)
+            ->update([
+                'name' => $request->input('name'),
+                'tag' => $request->input('tag'),
+                ]);
+
+        return redirect()->back()->with([
+            'success' => 'User group successfully updated.',
+            ]);
     }
 }
