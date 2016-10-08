@@ -46,10 +46,14 @@
 				<div class="row">
 					<label class="col-xs-12 col-md-3 form-control-label">User group</label>
 					<div class="col-xs-12 col-md-9">
-						<select class="form-control" name="role">
-							@foreach($userGroups as $userGroup)
+						<select class="form-control" name="group">
+						@foreach($userGroups as $userGroup)
+							@if(isset($user) && $user->groups[0]->id == $userGroup->id)
+							<option value="{{$userGroup->id}}" selected="selected">{{$userGroup->name}}</option>
+							@else
 							<option value="{{$userGroup->id}}">{{$userGroup->name}}</option>
-							@endforeach
+							@endif
+						@endforeach
 						</select>
 					</div>
 				</div>

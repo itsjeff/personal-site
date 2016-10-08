@@ -21,7 +21,11 @@
 	            <tr>
 	                <td><a href="{{$moduleUrl}}/{{$user->id}}/edit">{{$user->name}}</a></td>
 	                <td>{{$user->email}}</td>
-	                <td>{{$user->id}}</td>
+	                <td>
+	                	@foreach($user->groups as $group)
+	                		{{$group->name}}
+	                	@endforeach
+	                </td>
 	                <td>{{date('d M, Y - g:i a' ,strtotime($user->created_at))}}</td>
 	                <td width="10%" class="text-xs-center">
 	                	<a href="{{$moduleUrl}}/{{$user->id}}/edit">Edit</a> / 
