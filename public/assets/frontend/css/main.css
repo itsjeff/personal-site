@@ -212,4 +212,15 @@ pre {
   .content {
    padding: 0;
   }
+
+  
+  .secondary-row {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .secondary-row .categories li {
+    float: none;
+    display: inline-block;
+  }
 }
