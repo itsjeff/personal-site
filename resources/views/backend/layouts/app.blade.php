@@ -84,10 +84,12 @@
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     <script>
     tinymce.init({
-        plugins: ['link code'],
+        content_css : '/assets/backend/css/editor.css',
+        height: 450,
         menubar: false,
-        toolbar: 'undo redo | styleselect | bold italic underline strikethrough bullist numlist link | alignleft aligncenter alignright alignjustify | code removeformat',
+        plugins: ['link code'],
         selector:'textarea',
+        toolbar: 'undo redo | styleselect | bold italic underline strikethrough bullist numlist link | alignleft aligncenter alignright alignjustify | code removeformat',
     });
     </script>
 </body>

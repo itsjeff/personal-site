@@ -1,0 +1,25 @@
+body {
+  font-size: 16px;
+}
+
+p {
+  margin: 0 0 1.6em;
+  line-height: 1.6em;
+}
+
+code {
+  background: rgb(241, 244, 246);
+  border-radius: 4px;
+  color: #555;
+  display: block;
+  font-family: courier;
+  font-size: 14px;
+  line-height: 1.6em;
+  padding: .85em 1em;
+  overflow-x: auto;
+}
+
+pre {
+  margin: 0 0 1.6em;
+  line-height: 1.6em;
+}

@@ -16,10 +16,6 @@
 		        	<input class="form-control" type="text" name="title" value="@if(isset($post) && is_object($post)){{$post->title}}@endif">
 		        </div>
 		        <div class="form-group">
-		        	<label class="form-label">Cover Image</label>
-		        	<input class="form-control" type="file" name="coverimage">
-		        </div>
-		        <div class="form-group">
 		        	<label class="form-label">Content</label>
 		        	<textarea id="summernote" rows="7" name="content">@if(isset($post) && is_object($post)){{$post->content}}@endif</textarea>
 		        </div>
@@ -33,6 +29,11 @@
 						<option value="draft">Draft</option>
 					</select>
 				</div>
+
+		        <div class="form-group">
+		        	<label class="form-label">Cover Image</label>
+		        	<input class="form-control" type="file" name="coverimage">
+		        </div>
 
 				<h5>Categories</h5>
 				<div class="list-group">

@@ -17,6 +17,7 @@ body {
 
 p {
   line-height: 1.6em;
+  margin: 0 0 1.6em;
 }
 
 h1 {
@@ -53,7 +54,13 @@ code {
   font-family: courier;
   font-size: 14px;
   line-height: 1.6em;
-  padding: 1em 1.4em;
+  padding: .85em 1em;
+  overflow-x: auto;
+}
+
+pre {
+  margin: 0 0 1.6em;
+  line-height: 1.6em;
 }
 
 /* @container */
@@ -155,7 +162,6 @@ code {
 }
 
 .post-content p {
-  margin: 0;
   font-size: 1em;
 }
 
