@@ -84,7 +84,10 @@
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     <script>
     tinymce.init({
-        selector:'textarea'
+        plugins: ['link code'],
+        menubar: false,
+        toolbar: 'undo redo | styleselect | bold italic underline strikethrough bullist numlist link | alignleft aligncenter alignright alignjustify | code removeformat',
+        selector:'textarea',
     });
     </script>
 </body>
