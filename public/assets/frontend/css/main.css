@@ -56,6 +56,7 @@ code {
   line-height: 1.6em;
   padding: .85em 1em;
   overflow-x: auto;
+  white-space: nowrap;
 }
 
 pre {
