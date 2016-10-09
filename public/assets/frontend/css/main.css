@@ -217,6 +217,7 @@ pre {
   .secondary-row {
     overflow-x: auto;
     white-space: nowrap;
+    border-bottom: 1px solid rgba(0,0,0,.12);
   }
 
   .secondary-row .categories li {
