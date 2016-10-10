@@ -7,7 +7,6 @@
             {{session('status')}}
         </div>
     	@endif
-
 		@if(isset($userGroup))
 		<form method="post" action="{{$moduleUrl}}/{{$userGroup->id}}">
 			<input type="hidden" name="_method" value="PUT">
