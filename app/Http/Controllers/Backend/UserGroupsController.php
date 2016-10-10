@@ -92,7 +92,7 @@ class UserGroupsController extends Controller
      */
     public function edit($id)
     {
-        $this->pushBreadcrumb('Edit');
+        $this->pushBreadcrumb('Edit user group');
 
         $userGroup = $this->userGroup->where('id', $id)->first();
 
