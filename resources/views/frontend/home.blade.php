@@ -28,7 +28,11 @@
                             </div>
                         @endif
                         <div class="post-content">
-                            {!!$post->content!!}
+                            @if(strlen(strip_tags($post->content)) > 200)
+                                {{str_limit($post->content, 200)}}
+                            @else
+                                {!!$post->content!!}
+                            @endif
                         </div>
                     </article>
                 @endforeach
