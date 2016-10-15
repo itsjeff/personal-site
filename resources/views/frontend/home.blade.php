@@ -29,7 +29,9 @@
                         @endif
                         <div class="post-content">
                             @if(strlen(strip_tags($post->content)) > 150)
-                                <p>{{substr(strip_tags($post->content), 0, 150)}}...</p>
+                                <p>{{substr(strip_tags($post->content), 0, 150)}}... 
+
+                                <a href="/{{$post->slug}}" title="Read more of {{$post->title}}">read more</a></p>
                             @else
                                 {!!$post->content!!}
                             @endif
