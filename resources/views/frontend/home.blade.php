@@ -29,7 +29,7 @@
                         @endif
                         <div class="post-content">
                             @if(strlen(strip_tags($post->content)) > 200)
-                                {{str_limit($post->content, 200)}}
+                                {{substr($post->content, 0, 200)}}
                             @else
                                 {!!$post->content!!}
                             @endif
