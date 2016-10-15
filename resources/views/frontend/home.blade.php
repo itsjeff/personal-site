@@ -28,8 +28,8 @@
                             </div>
                         @endif
                         <div class="post-content">
-                            @if(strlen(strip_tags($post->content)) > 200)
-                                {{substr($post->content, 0, 200)}}
+                            @if(strlen(strip_tags($post->content)) > 150)
+                                <p>{{substr(strip_tags($post->content), 0, 150)}}...</p>
                             @else
                                 {!!$post->content!!}
                             @endif
