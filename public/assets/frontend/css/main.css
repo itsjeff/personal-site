@@ -213,6 +213,10 @@ pre {
 }
 
 @media(max-width: 47.9em) {
+  body {
+    background: #fff;
+  }
+
   .container {
     padding: 0 1em;
    }
